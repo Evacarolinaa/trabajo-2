@@ -1,4 +1,5 @@
 ---
+title: "Trabajo 2"
 format: html
 editor: visual
 bibliography: latibarometro.bib
@@ -36,31 +37,19 @@ La satisfacción con la democracia se distribuye de manera diferenciada según v
 
 para estudiar como se distribuye la satisfaccion con la democracia segun variables sociodemograficas contamos con laso siguientes variables:
 
-### variables dependientes
-
-- [Edad:]{.underline} variable de intervalo o razon
-
-- [Sexo:]{.underline} variable nominal
-
-- [Nivel educativo:]{.underline}
-
-- I[ngresos:]{.underline}
 
 ### variables independientes:
 
-- satisfaccion con la democracia
+-   [Edad:]{.underline} Es una variable de intervalo o razon, pues es numerica, ordena y categoriza. Esta variable no aparece en si en el cuestionario, pero si en la base de datos
 
-- [Edad:]{.underline} es una variable de intervalo o razon, pues es numerica, ordena y categoriza
+-   [Sexo:]{.underline} Es variable nominal pues categoriza, pero no ordena ni es numerica. Esta variable no aparece en si en el cuestionario, pero si en la base de datos.
 
-- [Sexo:]{.underline} es variable nominal pues categoriza, pero no ordena ni es numerica.
+-   [Nivel educativo:]{.underline} es una variable de intervalo o razon por q la pregunta elegida es numerica, ordena y categoriza. se eligio medir esta variable de forma mas escalar, tomando la pregunta S10: ¿A qué edad terminó Ud. su educación (educación de tiempo completo)? y S11:Qué estudios ha realizado? ¿Cuál es el último año cursado? del cuestionario.
 
-- [Nivel educativo:]{.underline} es una variable de intervalo o razon por q la pregunta elegida es numerica, ordena y categoriza
+### variables dependientes:
 
-- I[ngresos: es]{.underline} ordinal pues categoriza y ordena, pero no es numerica.
+-   satisfaccion con la democracia: es ordinal, pues categoriza y ordena pero no es numerica. la pregunta elegida para medirlo es la P11STGBS, que en la encuesta sale como: P11STGBS.A En general, ¿Diría Ud. que está muy satisfecho, más bien satisfecho, no muy satisfecho o nada satisfecho con el funcionamiento de la democracia en (PAÍS)?
 
-### variables independientes:
-
-- satisfaccion con la democracia: es ordinal, pues categoriza y ordena pero no es numerica. la pregunta elegida para medirlo es la P11STGBS, que en la encuesta sale como: P11STGBS.A En general, ¿Diría Ud. que está muy satisfecho, más bien satisfecho, no muy satisfecho o nada satisfecho con el funcionamiento de la democracia en (PAÍS)? bb8ebfaea872ce0e251aa6003157670f54e04bc4
 
 ```{r}
 # =========================
@@ -115,6 +104,38 @@ datos_satisfaccion_democratica <- base_2023 %>%
     nivel_educativo = S11,
     satisfaccion_democracia = P11STGBS.A
   )
+
+base_clean <- base_clean %>%
+  rename(
+    satisfaccion_democracia = sat_dem
+  )
+
+base_clean <- base_2023 %>%
+  select(EDAD, SEXO, S10, S11, P11STGBS.A) %>%
+  mutate(
+    satisfaccion_democracia = case_when(
+      P11STGBS.A %in% c(-1, -2, 0, 8) ~ NA_real_,
+      TRUE ~ P11STGBS.A
+    )
+  ) %>%
+  drop_na(satisfaccion_democracia)
+
+base_clean <- base_clean %>%
+  mutate(
+    satisfaccion_democracia = factor(satisfaccion_democracia, ordered = TRUE)
+  )
+
+base_clean <- base_clean %>%
+  select(-P11STGBS.A)
+
+datos_satisfaccion_democratica <- base_clean
+
+datos_satisfaccion_democratica <- datos_satisfaccion_democratica %>%
+  mutate(
+    S10 = ifelse(S10 < 0, NA, S10)
+  ) %>%
+  drop_na()
+
 ```
 
 ```{r}
@@ -122,13 +143,13 @@ datos_satisfaccion_democratica <- base_2023 %>%
 #TABLA DESCRIPTIVA (numéricas)
 tabla_desc <- datos_satisfaccion_democratica %>%
   summarise(
-    edad_media = mean(edad),
-    edad_mediana = median(edad),
-    edad_sd = sd(edad),
+    edad_media = mean(EDAD),
+    edad_mediana = median(EDAD),
+    edad_sd = sd(EDAD),
 
-    edad_fin_estudios_media = mean(edad_fin_estudios),
-    edad_fin_estudios_mediana = median(edad_fin_estudios),
-    edad_fin_estudios_sd = sd(edad_fin_estudios)
+    edad_fin_estudios_media = mean(S10),
+    edad_fin_estudios_mediana = median(S10),
+    edad_fin_estudios_sd = sd(S10)
   )
 
 tabla_desc
@@ -157,7 +178,7 @@ library(kableExtra)
 # =========================
 
 tab_sexo <- datos_satisfaccion_democratica %>%
-  count(sexo) %>%
+  count(SEXO) %>%
   mutate(porcentaje = round((n/sum(n))*100, 1))
 
 kable(tab_sexo, caption = "Distribución por sexo") %>%
@@ -168,7 +189,7 @@ kable(tab_sexo, caption = "Distribución por sexo") %>%
 # =========================
 
 tab_educ <- datos_satisfaccion_democratica %>%
-  count(nivel_educativo) %>%
+  count(S10) %>%
   mutate(porcentaje = round((n/sum(n))*100, 1))
 
 kable(tab_educ, caption = "Distribución nivel educativo") %>%
