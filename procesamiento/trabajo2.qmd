@@ -211,10 +211,18 @@ kable(tab_sat, caption = "Distribución satisfacción con la democracia") %>%
   kable_styling()
 ```
 
-```{r}
+**2.1 tablas de frecuencia**
 
-```
+**2.2 Variable Sexo**
 
-```{r}
+La muestra presenta una distribución equilibrada por sexo, con un **51% de mujeres y un 49% de hombres**, lo que permite comparaciones sin sesgos relevantes entre ambos grupos. Al tratarse de una variable nominal, sus categorías no implican orden ni jerarquía.
 
-```
+**2.3 Variable Nivel educativo (edad de finalización de estudios)**
+
+La variable corresponde a la edad de finalización de estudios (tipo cuantitativa), donde valores más altos indican trayectorias educativas más prolongadas. En la muestra, se observa una concentración en valores como **13 años (36%)**, **17 años (14,9%)** y **15 años (12,7%)**.
+
+La edad de finalización de estudios se concentra principalmente en estos valores, lo que sugiere trayectorias educativas diversas, con predominio de finalización en edades relativamente tempranas.
+
+**2.4 Variable satisfacción con la democracia**
+
+La satisfacción con la democracia es una variable ordinal, donde valores más bajos indican mayor satisfacción y valores más altos mayor insatisfacción. Los resultados muestran una concentración en categorías intermedias, con un 41,6% en la categoría 3 y un 30,4% en la categoría 2. En contraste, los extremos son menos frecuentes: un 8,1% se declara muy satisfecho (1) y un 19,9% nada satisfecho (4). En conjunto, esto evidencia una tendencia hacia niveles moderados de insatisfacción.
