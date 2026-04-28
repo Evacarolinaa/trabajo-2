@@ -81,6 +81,52 @@ base_2023 <- read_delim(
 
 ```{r}
 
+# =========================
+# LIMPIEZA COMPLETA
+# =========================
+
+base_clean <- base_2023 %>%
+  select(EDAD, SEXO, S10, S11, P11STGBS.A) %>%
+  mutate(
+    # eliminar NS/NR en todas
+
+    EDAD = na_if(EDAD, 0),
+
+    SEXO = na_if(SEXO, 0),
+
+    S10 = na_if(S10, 96),
+    S10 = na_if(S10, 97),
+    S10 = na_if(S10, 98),
+    S10 = na_if(S10, 0),
+
+    S11 = na_if(S11, 0),
+
+    sat_dem = na_if(P11STGBS.A, 8),
+    sat_dem = na_if(sat_dem, 0)
+  ) %>%
+  mutate(
+    # convertir tipos
+    SEXO = factor(SEXO, labels = c("Hombre", "Mujer")),
+    S11 = factor(S11, ordered = TRUE),
+    sat_dem = factor(sat_dem, ordered = TRUE)
+  ) %>%
+  drop_na()
+
+
+#RENOMBRAR VARIABLES
+
+base_clean <- base_clean %>%
+  rename(
+    edad = EDAD,
+    sexo = SEXO,
+    edad_fin_estudios = S10,
+    nivel_educativo = S11
+  )
+
+base_clean <- base_clean %>%
+  rename(
+    satisfaccion_democracia = sat_dem
+  )
 ```
 
 ```{r}
