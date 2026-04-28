@@ -38,31 +38,17 @@ La satisfacción con la democracia se distribuye de manera diferenciada según v
 
 para estudiar como se distribuye la satisfaccion con la democracia segun variables sociodemograficas contamos con laso siguientes variables:
 
-### variables dependientes
-
-HEAD
-- [Edad:]{.underline} variable de intervalo o razon
-
-- [Sexo:]{.underline} variable nominal
-
-- [Nivel educativo:]{.underline}
-
-- I[ngresos:]{.underline}
-
 ### variables independientes:
 
-- satisfaccion con la democracia
--   [Edad:]{.underline} es una variable de intervalo o razon, pues es numerica, ordena y categoriza
+-   [Edad:]{.underline} Es una variable de intervalo o razon, pues es numerica, ordena y categoriza. Esta variable no aparece en si en el cuestionario, pero si en la base de datos
 
--   [Sexo:]{.underline} es variable nominal pues categoriza, pero no ordena ni es numerica.
+-   [Sexo:]{.underline} Es variable nominal pues categoriza, pero no ordena ni es numerica. Esta variable no aparece en si en el cuestionario, pero si en la base de datos.
 
--   [Nivel educativo:]{.underline} es una variable de intervalo o razon por q la pregunta elegida es numerica, ordena y categoriza
+-   [Nivel educativo:]{.underline} es una variable de intervalo o razon por q la pregunta elegida es numerica, ordena y categoriza. se eligio medir esta variable de forma mas escalar, tomando la pregunta S10: ¿A qué edad terminó Ud. su educación (educación de tiempo completo)? y S11:Qué estudios ha realizado? ¿Cuál es el último año cursado? del cuestionario.
 
--   I[ngresos: es]{.underline} ordinal pues categoriza y ordena, pero no es numerica.
+### variables dependientes:
 
-### variables independientes:
-
--   satisfaccion con la democracia: es ordinal, pues categoriza y ordena pero no es numerica. la pregunta elegida para medirlo es la P11STGBS, que en la encuesta sale como: P11STGBS.A En general, ¿Diría Ud. que está muy satisfecho, más bien satisfecho, no muy satisfecho o nada satisfecho con el funcionamiento de la democracia en (PAÍS)? bb8ebfaea872ce0e251aa6003157670f54e04bc4
+-   satisfaccion con la democracia: es ordinal, pues categoriza y ordena pero no es numerica. la pregunta elegida para medirlo es la P11STGBS, que en la encuesta sale como: P11STGBS.A En general, ¿Diría Ud. que está muy satisfecho, más bien satisfecho, no muy satisfecho o nada satisfecho con el funcionamiento de la democracia en (PAÍS)?
 
 ```{r}
 # =========================
