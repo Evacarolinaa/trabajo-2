@@ -98,74 +98,23 @@ base_2023 <- read_delim(
 # LIMPIEZA COMPLETA
 # =========================
 
-base_clean <- base_2023 %>%
+datos_satisfaccion_democratica <- base_2023 %>%
   select(EDAD, SEXO, S10, S11, P11STGBS.A) %>%
   mutate(
-    # eliminar NS/NR en todas
-
-    EDAD = na_if(EDAD, 0),
-
-    SEXO = na_if(SEXO, 0),
-
-    S10 = na_if(S10, 96),
-    S10 = na_if(S10, 97),
-    S10 = na_if(S10, 98),
-    S10 = na_if(S10, 0),
-
-    S11 = na_if(S11, 0),
-
-    sat_dem = na_if(P11STGBS.A, 8),
-    sat_dem = na_if(sat_dem, 0)
+    EDAD = ifelse(EDAD <= 0, NA, EDAD),
+    SEXO = ifelse(SEXO == 0, NA, SEXO),
+    S10 = ifelse(S10 %in% c(0, 96, 97, 98) | S10 < 0, NA, S10),
+    S11 = ifelse(S11 == 0, NA, S11),
+    P11STGBS.A = ifelse(P11STGBS.A %in% c(0, 8) | P11STGBS.A < 0, NA, P11STGBS.A)
   ) %>%
-  mutate(
-    # convertir tipos
-    SEXO = factor(SEXO, labels = c("Hombre", "Mujer")),
-    S11 = factor(S11, ordered = TRUE),
-    sat_dem = factor(sat_dem, ordered = TRUE)
-  ) %>%
-  drop_na()
-
-
-#RENOMBRAR VARIABLES
-
-base_clean <- base_clean %>%
+  drop_na() %>%
   rename(
     edad = EDAD,
     sexo = SEXO,
     edad_fin_estudios = S10,
-    nivel_educativo = S11
+    nivel_educativo = S11,
+    satisfaccion_democracia = P11STGBS.A
   )
-
-base_clean <- base_clean %>%
-  rename(
-    satisfaccion_democracia = sat_dem
-  )
-
-base_clean <- base_2023 %>%
-  select(EDAD, SEXO, S10, S11, P11STGBS.A) %>%
-  mutate(
-    satisfaccion_democracia = case_when(
-      P11STGBS.A %in% c(-1, -2, 0, 8) ~ NA_real_,
-      TRUE ~ P11STGBS.A
-    )
-  ) %>%
-  drop_na(satisfaccion_democracia)
-
-base_clean <- base_clean %>%
-  mutate(
-    satisfaccion_democracia = factor(satisfaccion_democracia, ordered = TRUE)
-  )
-
-base_clean <- base_clean %>%
-  select(-P11STGBS.A)
-
-datos_satisfaccion_democratica <- base_clean
-
-datos_satisfaccion_democratica <- datos_satisfaccion_democratica %>%
-  mutate(
-    edad_fin_estudios = ifelse(edad_fin_estudios < 0, NA, edad_fin_estudios)
-  ) %>%
-  drop_na()
 ```
 
 ```{r}
@@ -195,33 +144,46 @@ La edad promedio de los encuestados es de 44 años, con una distribución relati
 # TABLAS DE FRECUENCIA CON PORCENTAJES
 # =========================
 
+# =========================
+# LIBRERÍAS
+# =========================
+
 library(dplyr)
 library(knitr)
 library(kableExtra)
 
-# Sexo
+# =========================
+# TABLA: SEXO
+# =========================
+
 tab_sexo <- datos_satisfaccion_democratica %>%
   count(sexo) %>%
   mutate(porcentaje = round((n/sum(n))*100, 1))
 
 kable(tab_sexo, caption = "Distribución por sexo") %>%
-  kable_styling()
+  kable_styling(full_width = FALSE)
 
-# Nivel educativo
+# =========================
+# TABLA: NIVEL EDUCATIVO
+# =========================
+
 tab_educ <- datos_satisfaccion_democratica %>%
   count(nivel_educativo) %>%
   mutate(porcentaje = round((n/sum(n))*100, 1))
 
 kable(tab_educ, caption = "Distribución nivel educativo") %>%
-  kable_styling()
+  kable_styling(full_width = FALSE)
 
-# Satisfacción con la democracia
+# =========================
+# TABLA: SATISFACCIÓN DEMOCRACIA
+# =========================
+
 tab_sat <- datos_satisfaccion_democratica %>%
   count(satisfaccion_democracia) %>%
   mutate(porcentaje = round((n/sum(n))*100, 1))
 
-kable(tab_sat, caption = "Distribución satisfacción con la democracia") %>%
-  kable_styling()
+kable(tab_sat, caption = "Satisfacción con la democracia") %>%
+  kable_styling(full_width = FALSE)
 ```
 
 **2.1 tablas de frecuencia**
@@ -240,9 +202,38 @@ La edad de finalización de estudios se concentra principalmente en estos valore
 
 La satisfacción con la democracia es una variable ordinal, donde valores más bajos indican mayor satisfacción y valores más altos mayor insatisfacción. Los resultados muestran una concentración en categorías intermedias, con un 41,6% en la categoría 3 y un 30,4% en la categoría 2. En contraste, los extremos son menos frecuentes: un 8,1% se declara muy satisfecho (1) y un 19,9% nada satisfecho (4). En conjunto, esto evidencia una tendencia hacia niveles moderados de insatisfacción.
 
-veamos si funciona hasta aca
+A continuación, se presentan dos gráficos descriptivos que permiten visualizar la distribución de dos variables del estudio. Edad y satisfacción con la democracia, esto con el objetivo de caracterizar la composición de la muestra y presentar la distribución de la satisfacción con la democracia
 
 ```{r}
+library(ggplot2)
+
+# =========================
+# GRÁFICO 1: EDAD
+# =========================
+
+ggplot(datos_satisfaccion_democratica, aes(x = edad)) +
+  geom_histogram(binwidth = 5, fill = "gray70", color = "black") +
+  labs(
+    title = "Distribución de la edad",
+    x = "Edad",
+    y = "Frecuencia"
+  ) +
+  theme_minimal()
+
+# =========================
+# GRÁFICO 2: SATISFACCIÓN DEMOCRACIA
+# =========================
+
+ggplot(datos_satisfaccion_democratica, aes(x = satisfaccion_democracia)) +
+  geom_bar(fill = "gray70", color = "black") +
+  labs(
+    title = "Distribución de la satisfacción con la democracia",
+    x = "Nivel de satisfacción",
+    y = "Frecuencia"
+  ) +
+  theme_minimal()
+
+
 
 ```
 
