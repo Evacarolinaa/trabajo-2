@@ -4,13 +4,11 @@ editor: visual
 bibliography: latibarometro.bib
 ---
 
-## 
-
 # Satisfaccion democratica en Argentina 2023
 
 ## problema de investigacion
 
- Desde 2018, cuando Bolsonaro fue electo,  América latina y principalmente Argentina ha experimentado transformaciones políticas y sociales marcadas por una creciente polarización y la emergencia de discursos asociados a orden, seguridad y crítica a las instituciones tradicionales, llegando a su punto culmine en las elecciones de 2023, donde el actual presidente, Javier Milei fue electo. Tal como dice [@tedesco2025] “Milei es, sin duda, una figura sumamente polarizante. Desde su ascenso en la política argentina, Milei se ha caracterizado por su fuerte retórica populista, sus propuestas económicas radicales y su estilo confrontativo, todo lo cual ha contribuido a una creciente polarización política.”. 
+Desde la elección del presidente Bolsonaro de Brasil en el 2018, América latina y principalmente Argentina ha experimentado transformaciones políticas y sociales marcadas por una creciente polarización y la emergencia de discursos asociados a orden, seguridad y crítica a las instituciones tradicionales, llegando a su punto culmine en las elecciones de 2023, donde el actual presidente, Javier Milei fue electo. Tal como dice [@tedesco2025] “Milei es, sin duda, una figura sumamente polarizante. Desde su ascenso en la política argentina, Milei se ha caracterizado por su fuerte retórica populista, sus propuestas económicas radicales y su estilo confrontativo, todo lo cual ha contribuido a una creciente polarización política.”. 
 
 El texto de Tedesco es uno de diversos estudios que han evidenciado un deterioro en la legitimidad de la democracia y un aumento en la tolerancia ciudadana hacia alternativas autoritarias. En este contexto, surge el problema de determinar si estos cambios en el escenario político argentino se vinculan con una mayor adhesión a posturas autoritarias en la ciudadanía, considerando variables como la insatisfacción con la democracia, el malestar económico, la tradición y  la desconfianza institucional.
 
@@ -40,7 +38,6 @@ para estudiar como se distribuye la satisfaccion con la democracia segun variabl
 
 ### variables dependientes
 
-HEAD
 - [Edad:]{.underline} variable de intervalo o razon
 
 - [Sexo:]{.underline} variable nominal
@@ -52,17 +49,18 @@ HEAD
 ### variables independientes:
 
 - satisfaccion con la democracia
--   [Edad:]{.underline} es una variable de intervalo o razon, pues es numerica, ordena y categoriza
 
--   [Sexo:]{.underline} es variable nominal pues categoriza, pero no ordena ni es numerica.
+- [Edad:]{.underline} es una variable de intervalo o razon, pues es numerica, ordena y categoriza
 
--   [Nivel educativo:]{.underline} es una variable de intervalo o razon por q la pregunta elegida es numerica, ordena y categoriza
+- [Sexo:]{.underline} es variable nominal pues categoriza, pero no ordena ni es numerica.
 
--   I[ngresos: es]{.underline} ordinal pues categoriza y ordena, pero no es numerica.
+- [Nivel educativo:]{.underline} es una variable de intervalo o razon por q la pregunta elegida es numerica, ordena y categoriza
+
+- I[ngresos: es]{.underline} ordinal pues categoriza y ordena, pero no es numerica.
 
 ### variables independientes:
 
--   satisfaccion con la democracia: es ordinal, pues categoriza y ordena pero no es numerica. la pregunta elegida para medirlo es la P11STGBS, que en la encuesta sale como: P11STGBS.A En general, ¿Diría Ud. que está muy satisfecho, más bien satisfecho, no muy satisfecho o nada satisfecho con el funcionamiento de la democracia en (PAÍS)? bb8ebfaea872ce0e251aa6003157670f54e04bc4
+- satisfaccion con la democracia: es ordinal, pues categoriza y ordena pero no es numerica. la pregunta elegida para medirlo es la P11STGBS, que en la encuesta sale como: P11STGBS.A En general, ¿Diría Ud. que está muy satisfecho, más bien satisfecho, no muy satisfecho o nada satisfecho con el funcionamiento de la democracia en (PAÍS)? bb8ebfaea872ce0e251aa6003157670f54e04bc4
 
 ```{r}
 # =========================
@@ -241,6 +239,8 @@ La edad de finalización de estudios se concentra principalmente en estos valore
 **2.4 Variable satisfacción con la democracia**
 
 La satisfacción con la democracia es una variable ordinal, donde valores más bajos indican mayor satisfacción y valores más altos mayor insatisfacción. Los resultados muestran una concentración en categorías intermedias, con un 41,6% en la categoría 3 y un 30,4% en la categoría 2. En contraste, los extremos son menos frecuentes: un 8,1% se declara muy satisfecho (1) y un 19,9% nada satisfecho (4). En conjunto, esto evidencia una tendencia hacia niveles moderados de insatisfacción.
+
+que mas pues
 
 ```{r}
 
