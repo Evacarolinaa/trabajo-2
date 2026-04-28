@@ -45,9 +45,9 @@ para estudiar como se distribuye la satisfaccion con la democracia segun variabl
 
 -   [Sexo:]{.underline} variable nominal
 
--   [Nivel educativo:]{.underline}
+-   [Nivel educativo:]{.underline} intervalo o razon
 
--   I[ngresos:]{.underline}
+-   I[ngresos:]{.underline} ordinal
 
 ### variables independientes: 
 
