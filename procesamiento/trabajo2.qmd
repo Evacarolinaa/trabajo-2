@@ -172,8 +172,43 @@ tabla_desc <- datos_satisfaccion_democratica %>%
 tabla_desc
 ```
 
+**1.1 tabla descriptiva de variables**
+
+La edad promedio de los encuestados es de 44 años, con una distribución relativamente amplia. Por su parte, la edad de finalización de estudios se concentra en torno a los 18 años, lo que coincide con la edad tipica de egreso de la educación media, aunque con cierta variabilidad que refleja trayectorias educativas más extensas.”
+
 ```{r}
 
+# =========================
+# TABLAS DE FRECUENCIA CON PORCENTAJES
+# =========================
+
+library(dplyr)
+library(knitr)
+library(kableExtra)
+
+# Sexo
+tab_sexo <- datos_satisfaccion_democratica %>%
+  count(sexo) %>%
+  mutate(porcentaje = round((n/sum(n))*100, 1))
+
+kable(tab_sexo, caption = "Distribución por sexo") %>%
+  kable_styling()
+
+# Nivel educativo
+tab_educ <- datos_satisfaccion_democratica %>%
+  count(nivel_educativo) %>%
+  mutate(porcentaje = round((n/sum(n))*100, 1))
+
+kable(tab_educ, caption = "Distribución nivel educativo") %>%
+  kable_styling()
+
+# Satisfacción con la democracia
+tab_sat <- datos_satisfaccion_democratica %>%
+  count(satisfaccion_democracia) %>%
+  mutate(porcentaje = round((n/sum(n))*100, 1))
+
+kable(tab_sat, caption = "Distribución satisfacción con la democracia") %>%
+  kable_styling()
 ```
 
 ```{r}
