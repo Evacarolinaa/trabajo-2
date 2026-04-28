@@ -1,16 +1,15 @@
 ---
+title: "Trabajo 2"
 format: html
 editor: visual
 bibliography: latibarometro.bib
 ---
 
-## 
-
 # Satisfaccion democratica en Argentina 2023
 
 ## problema de investigacion
 
- Desde 2018, cuando Bolsonaro fue electo,  América latina y principalmente Argentina ha experimentado transformaciones políticas y sociales marcadas por una creciente polarización y la emergencia de discursos asociados a orden, seguridad y crítica a las instituciones tradicionales, llegando a su punto culmine en las elecciones de 2023, donde el actual presidente, Javier Milei fue electo. Tal como dice [@tedesco2025] “Milei es, sin duda, una figura sumamente polarizante. Desde su ascenso en la política argentina, Milei se ha caracterizado por su fuerte retórica populista, sus propuestas económicas radicales y su estilo confrontativo, todo lo cual ha contribuido a una creciente polarización política.”. 
+Desde la elección del presidente Bolsonaro de Brasil en el 2018, América latina y principalmente Argentina ha experimentado transformaciones políticas y sociales marcadas por una creciente polarización y la emergencia de discursos asociados a orden, seguridad y crítica a las instituciones tradicionales, llegando a su punto culmine en las elecciones de 2023, donde el actual presidente, Javier Milei fue electo. Tal como dice [@tedesco2025] “Milei es, sin duda, una figura sumamente polarizante. Desde su ascenso en la política argentina, Milei se ha caracterizado por su fuerte retórica populista, sus propuestas económicas radicales y su estilo confrontativo, todo lo cual ha contribuido a una creciente polarización política.”. 
 
 El texto de Tedesco es uno de diversos estudios que han evidenciado un deterioro en la legitimidad de la democracia y un aumento en la tolerancia ciudadana hacia alternativas autoritarias. En este contexto, surge el problema de determinar si estos cambios en el escenario político argentino se vinculan con una mayor adhesión a posturas autoritarias en la ciudadanía, considerando variables como la insatisfacción con la democracia, el malestar económico, la tradición y  la desconfianza institucional.
 
@@ -38,6 +37,7 @@ La satisfacción con la democracia se distribuye de manera diferenciada según v
 
 para estudiar como se distribuye la satisfaccion con la democracia segun variables sociodemograficas contamos con laso siguientes variables:
 
+<<<<<<< HEAD
 ### variables independientes:
 
 -   [Edad:]{.underline} Es una variable de intervalo o razon, pues es numerica, ordena y categoriza. Esta variable no aparece en si en el cuestionario, pero si en la base de datos
@@ -49,6 +49,33 @@ para estudiar como se distribuye la satisfaccion con la democracia segun variabl
 ### variables dependientes:
 
 -   satisfaccion con la democracia: es ordinal, pues categoriza y ordena pero no es numerica. la pregunta elegida para medirlo es la P11STGBS, que en la encuesta sale como: P11STGBS.A En general, ¿Diría Ud. que está muy satisfecho, más bien satisfecho, no muy satisfecho o nada satisfecho con el funcionamiento de la democracia en (PAÍS)?
+=======
+### variables dependientes
+
+- [Edad:]{.underline} variable de intervalo o razon
+
+- [Sexo:]{.underline} variable nominal
+
+- [Nivel educativo:]{.underline}
+
+- I[ngresos:]{.underline}
+
+### variables independientes:
+
+- satisfaccion con la democracia
+
+- [Edad:]{.underline} es una variable de intervalo o razon, pues es numerica, ordena y categoriza
+
+- [Sexo:]{.underline} es variable nominal pues categoriza, pero no ordena ni es numerica.
+
+- [Nivel educativo:]{.underline} es una variable de intervalo o razon por q la pregunta elegida es numerica, ordena y categoriza
+
+- I[ngresos: es]{.underline} ordinal pues categoriza y ordena, pero no es numerica.
+
+### variables independientes:
+
+- satisfaccion con la democracia: es ordinal, pues categoriza y ordena pero no es numerica. la pregunta elegida para medirlo es la P11STGBS, que en la encuesta sale como: P11STGBS.A En general, ¿Diría Ud. que está muy satisfecho, más bien satisfecho, no muy satisfecho o nada satisfecho con el funcionamiento de la democracia en (PAÍS)? bb8ebfaea872ce0e251aa6003157670f54e04bc4
+>>>>>>> 99b0669ea0dc74b30af1ff6e32f87945ad4ea238
 
 ```{r}
 # =========================
@@ -151,7 +178,7 @@ datos_satisfaccion_democratica <- base_clean
 
 datos_satisfaccion_democratica <- datos_satisfaccion_democratica %>%
   mutate(
-    edad_fin_estudios = ifelse(edad_fin_estudios < 0, NA, edad_fin_estudios)
+    S10 = ifelse(S10 < 0, NA, S10)
   ) %>%
   drop_na()
 ```
@@ -161,13 +188,13 @@ datos_satisfaccion_democratica <- datos_satisfaccion_democratica %>%
 #TABLA DESCRIPTIVA (numéricas)
 tabla_desc <- datos_satisfaccion_democratica %>%
   summarise(
-    edad_media = mean(edad),
-    edad_mediana = median(edad),
-    edad_sd = sd(edad),
+    edad_media = mean(EDAD),
+    edad_mediana = median(EDAD),
+    edad_sd = sd(EDAD),
 
-    edad_fin_estudios_media = mean(edad_fin_estudios),
-    edad_fin_estudios_mediana = median(edad_fin_estudios),
-    edad_fin_estudios_sd = sd(edad_fin_estudios)
+    edad_fin_estudios_media = mean(S10),
+    edad_fin_estudios_mediana = median(S10),
+    edad_fin_estudios_sd = sd(S10)
   )
 
 tabla_desc
@@ -189,7 +216,7 @@ library(kableExtra)
 
 # Sexo
 tab_sexo <- datos_satisfaccion_democratica %>%
-  count(sexo) %>%
+  count(SEXO) %>%
   mutate(porcentaje = round((n/sum(n))*100, 1))
 
 kable(tab_sexo, caption = "Distribución por sexo") %>%
@@ -197,7 +224,7 @@ kable(tab_sexo, caption = "Distribución por sexo") %>%
 
 # Nivel educativo
 tab_educ <- datos_satisfaccion_democratica %>%
-  count(nivel_educativo) %>%
+  count(S10) %>%
   mutate(porcentaje = round((n/sum(n))*100, 1))
 
 kable(tab_educ, caption = "Distribución nivel educativo") %>%
@@ -227,6 +254,8 @@ La edad de finalización de estudios se concentra principalmente en estos valore
 **2.4 Variable satisfacción con la democracia**
 
 La satisfacción con la democracia es una variable ordinal, donde valores más bajos indican mayor satisfacción y valores más altos mayor insatisfacción. Los resultados muestran una concentración en categorías intermedias, con un 41,6% en la categoría 3 y un 30,4% en la categoría 2. En contraste, los extremos son menos frecuentes: un 8,1% se declara muy satisfecho (1) y un 19,9% nada satisfecho (4). En conjunto, esto evidencia una tendencia hacia niveles moderados de insatisfacción.
+
+veamos si funciona hasta aca
 
 ```{r}
 
