@@ -37,15 +37,21 @@ La satisfacción con la democracia se distribuye de manera diferenciada según v
 
 ## Variables
 
-## edad
+para estudiar como se distribuye la satisfaccion con la democracia segun variables sociodemograficas contamos con laso siguientes variables:
 
-sexo
+### variables dependientes
 
-ingreso
+-   [Edad:]{.underline} variable de intervalo o razon
 
-nivel educativo
+-   [Sexo:]{.underline} variable nominal
 
-satisfaccion con la democracia (escalar)
+-   [Nivel educativo:]{.underline}
+
+-   I[ngresos:]{.underline}
+
+### variables independientes: 
+
+-   satisfaccion con la democracia
 
 ```{r}
 # =========================
