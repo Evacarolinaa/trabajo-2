@@ -39,14 +39,7 @@ La satisfacción con la democracia se distribuye de manera diferenciada según v
 
 ## Variables
 
-```{r}
-install.packages("pacman")
-pacman::p_load_current_gh("ggplot")
-
-
-```
-
-edad
+## edad
 
 sexo
 
@@ -55,3 +48,33 @@ ingreso
 nivel educativo
 
 satisfaccion con la democracia (escalar)
+
+```{r}
+# =========================
+# LIBRERÍAS
+# =========================
+
+if (!require(pacman)) install.packages("pacman")
+
+pacman::p_load(
+  tidyverse,   # incluye dplyr, ggplot2, readr
+  readr,
+  dplyr,
+  ggplot2,
+  janitor,
+  kableExtra
+)
+
+
+
+```
+
+```{r}
+
+# CARGA DE BASE (HIPO)
+base_2023 <- read_delim(
+  "../input/data/Latinobarometro_2023_Argentina_Csv_esp_v1.csv",
+  delim = ";"
+)
+
+```
