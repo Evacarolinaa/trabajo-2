@@ -103,10 +103,7 @@ datos_satisfaccion_democratica <- base_2023 %>%
     satisfaccion_democracia = P11STGBS.A
   )
 
-base_clean <- base_clean %>%
-  rename(
-    satisfaccion_democracia = sat_dem
-  )
+
 
 base_clean <- base_2023 %>%
   select(EDAD, SEXO, S10, S11, P11STGBS.A) %>%
@@ -193,6 +190,7 @@ tab_educ <- datos_satisfaccion_democratica %>%
 kable(tab_educ, caption = "Distribución nivel educativo") %>%
   kable_styling(full_width = FALSE)
 
+
 # =========================
 # TABLA: SATISFACCIÓN DEMOCRACIA
 # =========================
@@ -230,7 +228,7 @@ library(ggplot2)
 # GRÁFICO 1: EDAD
 # =========================
 
-ggplot(datos_satisfaccion_democratica, aes(x = edad)) +
+ggplot(datos_satisfaccion_democratica, aes(x = EDAD)) +
   geom_histogram(binwidth = 5, fill = "gray70", color = "black") +
   labs(
     title = "Distribución de la edad",
