@@ -41,17 +41,17 @@ para estudiar como se distribuye la satisfaccion con la democracia segun variabl
 
 ### variables dependientes
 
--   [Edad:]{.underline} variable de intervalo o razon
+- [Edad:]{.underline} variable de intervalo o razon
 
--   [Sexo:]{.underline} variable nominal
+- [Sexo:]{.underline} variable nominal
 
--   [Nivel educativo:]{.underline}
+- [Nivel educativo:]{.underline}
 
--   I[ngresos:]{.underline}
+- I[ngresos:]{.underline}
 
-### variables independientes: 
+### variables independientes:
 
--   satisfaccion con la democracia
+- satisfaccion con la democracia
 
 ```{r}
 # =========================
@@ -230,3 +230,11 @@ La edad de finalización de estudios se concentra principalmente en estos valore
 **2.4 Variable satisfacción con la democracia**
 
 La satisfacción con la democracia es una variable ordinal, donde valores más bajos indican mayor satisfacción y valores más altos mayor insatisfacción. Los resultados muestran una concentración en categorías intermedias, con un 41,6% en la categoría 3 y un 30,4% en la categoría 2. En contraste, los extremos son menos frecuentes: un 8,1% se declara muy satisfecho (1) y un 19,9% nada satisfecho (4). En conjunto, esto evidencia una tendencia hacia niveles moderados de insatisfacción.
+
+```{r}
+
+```
+
+```{r}
+
+```
