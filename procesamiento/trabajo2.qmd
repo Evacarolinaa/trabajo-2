@@ -127,10 +127,49 @@ base_clean <- base_clean %>%
   rename(
     satisfaccion_democracia = sat_dem
   )
+
+base_clean <- base_2023 %>%
+  select(EDAD, SEXO, S10, S11, P11STGBS.A) %>%
+  mutate(
+    satisfaccion_democracia = case_when(
+      P11STGBS.A %in% c(-1, -2, 0, 8) ~ NA_real_,
+      TRUE ~ P11STGBS.A
+    )
+  ) %>%
+  drop_na(satisfaccion_democracia)
+
+base_clean <- base_clean %>%
+  mutate(
+    satisfaccion_democracia = factor(satisfaccion_democracia, ordered = TRUE)
+  )
+
+base_clean <- base_clean %>%
+  select(-P11STGBS.A)
+
+datos_satisfaccion_democratica <- base_clean
+
+datos_satisfaccion_democratica <- datos_satisfaccion_democratica %>%
+  mutate(
+    edad_fin_estudios = ifelse(edad_fin_estudios < 0, NA, edad_fin_estudios)
+  ) %>%
+  drop_na()
 ```
 
 ```{r}
 
+#TABLA DESCRIPTIVA (numéricas)
+tabla_desc <- datos_satisfaccion_democratica %>%
+  summarise(
+    edad_media = mean(edad),
+    edad_mediana = median(edad),
+    edad_sd = sd(edad),
+
+    edad_fin_estudios_media = mean(edad_fin_estudios),
+    edad_fin_estudios_mediana = median(edad_fin_estudios),
+    edad_fin_estudios_sd = sd(edad_fin_estudios)
+  )
+
+tabla_desc
 ```
 
 ```{r}
