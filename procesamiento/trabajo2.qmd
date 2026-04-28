@@ -1,8 +1,7 @@
 ---
-title: "trabajo2"
 format: html
 editor: visual
-bibliography:latibarometro.bib
+bibliography: latibarometro.bib
 ---
 
 ## 
@@ -41,6 +40,7 @@ para estudiar como se distribuye la satisfaccion con la democracia segun variabl
 
 ### variables dependientes
 
+HEAD
 - [Edad:]{.underline} variable de intervalo o razon
 
 - [Sexo:]{.underline} variable nominal
@@ -52,6 +52,17 @@ para estudiar como se distribuye la satisfaccion con la democracia segun variabl
 ### variables independientes:
 
 - satisfaccion con la democracia
+-   [Edad:]{.underline} es una variable de intervalo o razon, pues es numerica, ordena y categoriza
+
+-   [Sexo:]{.underline} es variable nominal pues categoriza, pero no ordena ni es numerica.
+
+-   [Nivel educativo:]{.underline} es una variable de intervalo o razon por q la pregunta elegida es numerica, ordena y categoriza
+
+-   I[ngresos: es]{.underline} ordinal pues categoriza y ordena, pero no es numerica.
+
+### variables independientes:
+
+-   satisfaccion con la democracia: es ordinal, pues categoriza y ordena pero no es numerica. la pregunta elegida para medirlo es la P11STGBS, que en la encuesta sale como: P11STGBS.A En general, ¿Diría Ud. que está muy satisfecho, más bien satisfecho, no muy satisfecho o nada satisfecho con el funcionamiento de la democracia en (PAÍS)? bb8ebfaea872ce0e251aa6003157670f54e04bc4
 
 ```{r}
 # =========================
