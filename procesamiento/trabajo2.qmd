@@ -41,17 +41,17 @@ para estudiar como se distribuye la satisfaccion con la democracia segun variabl
 
 ### variables dependientes
 
--   [Edad:]{.underline} variable de intervalo o razon
+-   [Edad:]{.underline} es una variable de intervalo o razon, pues es numerica, ordena y categoriza
 
--   [Sexo:]{.underline} variable nominal
+-   [Sexo:]{.underline} es variable nominal pues categoriza, pero no ordena ni es numerica.
 
--   [Nivel educativo:]{.underline} intervalo o razon
+-   [Nivel educativo:]{.underline} es una variable de intervalo o razon por q la pregunta elegida es numerica, ordena y categoriza
 
--   I[ngresos:]{.underline} ordinal
+-   I[ngresos: es]{.underline} ordinal pues categoriza y ordena, pero no es numerica.
 
 ### variables independientes: 
 
--   satisfaccion con la democracia
+-   satisfaccion con la democracia: es ordinal, pues categoriza y ordena pero no es numerica. la pregunta elegida para medirlo es la undefined
 
 ```{r}
 # =========================
