@@ -37,7 +37,6 @@ La satisfacción con la democracia se distribuye de manera diferenciada según v
 
 para estudiar como se distribuye la satisfaccion con la democracia segun variables sociodemograficas contamos con laso siguientes variables:
 
-
 ### variables independientes:
 
 -   [Edad:]{.underline} Es una variable de intervalo o razon, pues es numerica, ordena y categoriza. Esta variable no aparece en si en el cuestionario, pero si en la base de datos
@@ -49,7 +48,6 @@ para estudiar como se distribuye la satisfaccion con la democracia segun variabl
 ### variables dependientes:
 
 -   satisfaccion con la democracia: es ordinal, pues categoriza y ordena pero no es numerica. la pregunta elegida para medirlo es la P11STGBS, que en la encuesta sale como: P11STGBS.A En general, ¿Diría Ud. que está muy satisfecho, más bien satisfecho, no muy satisfecho o nada satisfecho con el funcionamiento de la democracia en (PAÍS)?
-
 
 ```{r}
 # =========================
