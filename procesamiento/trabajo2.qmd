@@ -1,8 +1,7 @@
 ---
-title: "trabajo2"
 format: html
 editor: visual
-bibliography:latibarometro.bib
+bibliography: latibarometro.bib
 ---
 
 ## 
@@ -49,12 +48,9 @@ para estudiar como se distribuye la satisfaccion con la democracia segun variabl
 
 -   I[ngresos: es]{.underline} ordinal pues categoriza y ordena, pero no es numerica.
 
-### variables independientes: 
+### variables independientes:
 
--   satisfaccion con la democracia: es ordinal, pues categoriza y ordena pero no es numerica. la pregunta elegida para medirlo es la P11STGBS, que en la encuesta sale como: P11STGBS.A En general, ¿Diría Ud. que está muy
-satisfecho, más bien satisfecho, no muy satisfecho o
-nada satisfecho con el funcionamiento de la democracia
-en (PAÍS)? 
+-   satisfaccion con la democracia: es ordinal, pues categoriza y ordena pero no es numerica. la pregunta elegida para medirlo es la P11STGBS, que en la encuesta sale como: P11STGBS.A En general, ¿Diría Ud. que está muy satisfecho, más bien satisfecho, no muy satisfecho o nada satisfecho con el funcionamiento de la democracia en (PAÍS)?
 
 ```{r}
 # =========================
