@@ -202,7 +202,7 @@ La edad de finalización de estudios se concentra principalmente en estos valore
 
 La satisfacción con la democracia es una variable ordinal, donde valores más bajos indican mayor satisfacción y valores más altos mayor insatisfacción. Los resultados muestran una concentración en categorías intermedias, con un 41,6% en la categoría 3 y un 30,4% en la categoría 2. En contraste, los extremos son menos frecuentes: un 8,1% se declara muy satisfecho (1) y un 19,9% nada satisfecho (4). En conjunto, esto evidencia una tendencia hacia niveles moderados de insatisfacción.
 
-A continuación, se presentan dos gráficos descriptivos que permiten visualizar la distribución de dos variables del estudio. Edad y satisfacción con la democracia, esto con el objetivo de caracterizar la composición de la muestra y presentar la distribución de la satisfacción con la democracia
+**3.1** A continuación, se presentan dos gráficos descriptivos que permiten visualizar la distribución de dos variables del estudio. Edad y satisfacción con la democracia, esto con el objetivo de caracterizar la composición de la muestra y presentar la distribución de la satisfacción con la democracia
 
 ```{r}
 library(ggplot2)
@@ -237,6 +237,10 @@ ggplot(datos_satisfaccion_democratica, aes(x = satisfaccion_democracia)) +
 
 ```
 
-```{r}
+**3.2** **Distrinución de la edad**
 
-```
+El gráfico muestra una distribución amplia de la edad, con mayor concentración en rangos intermedios, especialmente entre los 25 y 50 años. Se observa una disminución progresiva en los grupos de mayor edad, lo que refleja una muestra heterogénea con predominio de adultos en etapas medias del ciclo de vida.
+
+**3.3 Satisfacción con la democracia**
+
+La distribución de la satisfacción con la democracia se concentra en las categorías intermedias, destacando la categoría 3 como la más frecuente, seguida de la 2. Considerando que valores más altos indican mayor insatisfacción, estos resultados evidencian una tendencia hacia niveles moderados de insatisfacción, con menor presencia de posturas extremas.
