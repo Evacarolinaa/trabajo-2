@@ -1,0 +1,57 @@
+---
+title: "trabajo2"
+format: html
+editor: visual
+bibliography:bib
+---
+
+## 
+
+# Satisfaccion democratica en Argentina 2023
+
+## problema de investigacion
+
+ Desde 2018, cuando Bolsonaro fue electo,  América latina y principalmente Argentina ha experimentado transformaciones políticas y sociales marcadas por una creciente polarización y la emergencia de discursos asociados a orden, seguridad y crítica a las instituciones tradicionales, llegando a su punto culmine en las elecciones de 2023, donde el actual presidente, Javier Milei fue electo. Tal como dice \@[Tedesco](https://journals.sagepub.com/doi/pdf/10.1177/29769442251325357?utm_source=consensus "Tedesco") (2025) “Milei es, sin duda, una figura sumamente polarizante. Desde su ascenso en la política argentina, Milei se ha caracterizado por su fuerte retórica populista, sus propuestas económicas radicales y su estilo confrontativo, todo lo cual ha contribuido a una creciente polarización política.”. 
+
+El texto de Tedesco es uno de diversos estudios que han evidenciado un deterioro en la legitimidad de la democracia y un aumento en la tolerancia ciudadana hacia alternativas autoritarias. En este contexto, surge el problema de determinar si estos cambios en el escenario político argentino se vinculan con una mayor adhesión a posturas autoritarias en la ciudadanía, considerando variables como la insatisfacción con la democracia, el malestar económico, la tradición y  la desconfianza institucional.
+
+## Justificación
+
+La relevancia de esta investigación radica en comprender por qué, en el contexto argentino actual, ciertos sectores de la población muestran una mayor disposición a adherir a medidas autoritarias, aun cuando estas impliquen restricciones a libertades individuales. Este fenómeno se vuelve especialmente significativo en un escenario marcado por crisis económicas recurrentes, inflación sostenida, incertidumbre social y una creciente demanda por orden y estabilidad.
+
+En este marco, resulta clave analizar cómo se configuran determinadas disposiciones ciudadanas que llevan a aceptar soluciones que, en otras circunstancias, no serían consideradas legítimas. Así, el foco está en explicar cómo este clima social se articula con la emergencia de discursos políticos que enfatizan el orden y la autoridad, sin asumir una relación causal única, sino entendiendo que responde a un entramado más amplio de factores.
+
+En este estudio, se abordarán como ejes centrales la percepción de inseguridad, la desconfianza institucional y la crisis económica, reconociendo que, si bien no agotan la complejidad del fenómeno, constituyen variables clave para su comprensión en el caso argentino.
+
+Hemos decidido analizar los datos del Latinobarómetro entre los años 2018 y 2023 debido a que el año 2018 marca el inicio de un periodo de creciente inestabilidad económica y social en Argentina, caracterizado por crisis cambiarias, aumento de la inflación y deterioro del poder adquisitivo.
+
+Este escenario se ve profundizado por eventos posteriores, como la crisis económica sostenida, el impacto de la pandemia de COVID-19 (2020–2022) y sus consecuencias sobre el empleo y la desigualdad, así como un aumento en la desconfianza hacia las instituciones políticas.
+
+En conjunto, este periodo concentra transformaciones estructurales y subjetivas que permiten observar cómo evolucionan las percepciones ciudadanas en contextos de crisis acumulada y cómo estas se articulan con cambios en la disposición hacia el orden, la autoridad y los proyectos políticos emergentes en Argentina.
+
+## pregunta de investigacion
+
+¿Cómo se distribuye la satisfacción con la democracia según variables sociodemográficas (edad, sexo, ingreso y nivel educativo) en Argentina (2023)?
+
+## Hipotesis
+
+La satisfacción con la democracia se distribuye de manera diferenciada según variables sociodemográficas (edad, sexo, ingreso y nivel educativo) en Argentina (2023).
+
+## Variables
+
+```{r}
+install.packages("pacman")
+pacman::p_load_current_gh("ggplot")
+
+
+```
+
+edad
+
+sexo
+
+ingreso
+
+nivel educativo
+
+satisfaccion con la democracia (escalar)
