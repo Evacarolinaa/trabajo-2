@@ -170,7 +170,7 @@ datos_satisfaccion_democratica %>%
   ) %>%
   kable("markdown")
 
-#TABLA CATEGORICA
+#TABLA CATEGORICA(FRECUENCIA)
 
 datos_satisfaccion_democratica %>%
   count(sexo) %>%
@@ -186,51 +186,7 @@ La edad promedio de los encuestados es de 44 años, con una distribución relati
 
 ```{r}
 
-# =========================
-# TABLAS DE FRECUENCIA CON PORCENTAJES
-# =========================
 
-# =========================
-# LIBRERÍAS
-# =========================
-
-library(dplyr)
-library(knitr)
-library(kableExtra)
-
-# =========================
-# TABLA: SEXO
-# =========================
-
-tab_sexo <- datos_satisfaccion_democratica %>%
-  count(SEXO) %>%
-  mutate(porcentaje = round((n/sum(n))*100, 1))
-
-kable(tab_sexo, caption = "Distribución por sexo") %>%
-  kable_styling(full_width = FALSE)
-
-# =========================
-# TABLA: NIVEL EDUCATIVO
-# =========================
-
-tab_educ <- datos_satisfaccion_democratica %>%
-  count(S10) %>%
-  mutate(porcentaje = round((n/sum(n))*100, 1))
-
-kable(tab_educ, caption = "Distribución nivel educativo") %>%
-  kable_styling(full_width = FALSE)
-
-
-# =========================
-# TABLA: SATISFACCIÓN DEMOCRACIA
-# =========================
-
-tab_sat <- datos_satisfaccion_democratica %>%
-  count(satisfaccion_democracia) %>%
-  mutate(porcentaje = round((n/sum(n))*100, 1))
-
-kable(tab_sat, caption = "Satisfacción con la democracia") %>%
-  kable_styling(full_width = FALSE)
 ```
 
 **2.1 tablas de frecuencia**
