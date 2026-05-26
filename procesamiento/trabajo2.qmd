@@ -43,15 +43,9 @@ para estudiar como se distribuye la satisfaccion con la democracia segun variabl
 
 2.  [Sexo:]{.underline} Es variable nominal pues categoriza, pero no ordena ni es numerica. Esta variable no aparece en si en el cuestionario, pero si en la base de datos.
 
-3.  [Nivel educativo:]{.underline} En el caso del nivel educativo, se decidio operacionalizar mediante un indice construido a partir de multiples variables relacionadas con la trayectoria educativa individual y familiar, intentando captar de manera más amplia las trayectorias educativas y el contexto educativo familiar de los encuestados. la complejización de la medición permite aproximarnos no solo a la trayectoria educativa individual del encuestado, sino también al contexto educativo y sociocultural en el que se desarrolla. Este indice esta compuesto por las siguientes preguntas:
+3.  Para operacionalizar el nivel educativo, se construyó un Índice de Capital Sociocultural compuesto por variables relacionadas tanto con la trayectoria educativa individual como con el contexto social y educativo familiar de los encuestados. La construcción de este índice busca complejizar la medición tradicional del nivel educativo, incorporando dimensiones asociadas al capital cultural y a la posición social de origen.
 
-- S10 : Edad de finalizacion de estudios
-
-- S11 : Nivel educativo alcanzado por el encuestado
-
-- S12 : Nivel educativo de los padres
-
-- S21A/S21B : Nivel educativo del jefe del hogar
+    El índice fue construido a partir de las variables `S11` (nivel educativo alcanzado por el encuestado), `S12` (nivel educativo de los padres) y `S2` (clase social subjetiva). De esta manera, el indicador permite aproximarse no solo al logro educativo individual, sino también al entorno sociocultural en el que se desarrolla el individuo.
 
 ### Variable dependiente
 
@@ -94,7 +88,14 @@ base_2023 <- read_delim(
 
 datos_satisfaccion_democratica <- base_2023 %>%
   
-  select(EDAD, SEXO, S10, S11, S12, S21A, S21B, P11STGBS.A) %>%
+  select(
+    EDAD,
+    SEXO,
+    S2,
+    S11,
+    S12,
+    P11STGBS.A
+  ) %>%
   
   mutate(
 
@@ -104,17 +105,14 @@ datos_satisfaccion_democratica <- base_2023 %>%
     # limpieza sexo
     SEXO = ifelse(SEXO == 0, NA, SEXO),
 
-    # educación propia
-S10 = ifelse(S10 < 0 | S10 %in% c(96,97,98,99), NA, S10),
-S11 = ifelse(S11 < 0 | S11 %in% c(96,97,98,99), NA, S11),
+    # clase social subjetiva
+    S2 = ifelse(S2 < 0 | S2 %in% c(0,8), NA, S2),
 
-# educación padres
-S12 = ifelse(S12 < 0 | S12 %in% c(96,97,98,99), NA, S12),
+    # nivel educativo encuestado
+    S11 = ifelse(S11 < 0 | S11 %in% c(96,97,98,99), NA, S11),
 
-# educación jefe hogar
-S21A = ifelse(S21A < 0 | S21A %in% c(96,97,98,99), NA, S21A),
-S21B = ifelse(S21B < 0 | S21B %in% c(96,97,98,99), NA, S21B),
-
+    # nivel educativo padres
+    S12 = ifelse(S12 < 0 | S12 %in% c(96,97,98,99), NA, S12),
 
     # satisfacción democracia
     satisfaccion_democracia = case_when(
@@ -127,26 +125,29 @@ S21B = ifelse(S21B < 0 | S21B %in% c(96,97,98,99), NA, S21B),
   rename(
     edad = EDAD,
     sexo = SEXO,
-    edad_fin_estudios = S10,
+    clase_social = S2,
     nivel_educativo = S11,
-    nivel_padres = S12,
-    edad_fin_estudios_jefe = S21A,
-    nivel_educativo_jefe = S21B
+    nivel_padres = S12
   ) %>%
 
   mutate(
+
     satisfaccion_democracia = factor(
       satisfaccion_democracia,
       ordered = TRUE
-    )
+    ),
+
+    indice_capital_sociocultural =
+      rowMeans(
+        select(., clase_social, nivel_educativo, nivel_padres),
+        na.rm = TRUE
+      )
+
   ) %>%
 
   select(-P11STGBS.A) %>%
 
   drop_na(satisfaccion_democracia)
-
-names(datos_satisfaccion_democratica)
-
 
 
 
@@ -161,11 +162,10 @@ names(datos_satisfaccion_democratica)
 datos_satisfaccion_democratica %>%
   select(
     edad,
-    edad_fin_estudios,
+    clase_social,
     nivel_educativo,
     nivel_padres,
-    edad_fin_estudios_jefe,
-    nivel_educativo_jefe
+    indice_capital_sociocultural
   ) %>%
   sjmisc::descr(
     show = c("label", "range", "mean", "sd", "NA.prc", "n")
