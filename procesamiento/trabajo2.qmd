@@ -294,3 +294,29 @@ La matriz de correlaciones evidencia asociaciones coherentes entre las variables
 Asimismo, el índice de capital sociocultural presenta asociaciones altas con las variables educativas que lo componen, especialmente con el nivel educativo de los padres (`r = 0.89`) y con el nivel educativo del encuestado (`r = 0.67`). Esto indica que el índice se encuentra fuertemente influenciado por dimensiones asociadas al capital educativo familiar e individual.
 
 Por otra parte, la edad presenta una correlación negativa moderada con el índice de capital sociocultural (`r = -0.33`), lo que podría sugerir diferencias generacionales en acceso a educación y posición sociocultural. Finalmente, la clase social subjetiva presenta correlaciones negativas débiles con las variables educativas (`r = -0.25` y `r = -0.23`), resultado coherente con la codificación de la variable, donde valores numéricamente menores representan posiciones sociales más altas.
+
+```{r}
+# =========================
+# ASOCIACIÓN ENTRE CAPITAL
+# SOCIOCULTURAL Y
+# SATISFACCIÓN DEMOCRÁTICA
+# =========================
+
+ggplot(
+  datos_satisfaccion_democratica,
+  aes(
+    x = satisfaccion_democracia,
+    y = indice_capital_sociocultural
+  )
+) +
+  
+  geom_boxplot(fill = "gray70") +
+  
+  labs(
+    title = "Capital sociocultural según satisfacción democrática",
+    x = "Satisfacción con la democracia",
+    y = "Índice de capital sociocultural"
+  ) +
+  
+  theme_minimal()
+```
