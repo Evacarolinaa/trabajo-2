@@ -320,3 +320,7 @@ ggplot(
   
   theme_minimal()
 ```
+
+El gráfico evidencia una tendencia donde los niveles más altos de satisfacción con la democracia se asocian con valores ligeramente superiores del índice de capital sociocultural. A medida que aumenta la insatisfacción democrática, las medianas del índice tienden a disminuir gradualmente.
+
+Si bien las diferencias entre categorías no son extremas, la distribución general sugiere una asociación consistente entre ambas variables, observándose una leve concentración de menores niveles de capital sociocultural en los grupos con mayor insatisfacción democrática.
