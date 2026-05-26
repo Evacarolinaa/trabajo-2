@@ -240,7 +240,7 @@ ggplot(datos_satisfaccion_democratica, aes(x = satisfaccion_democracia)) +
 
 ```
 
-**3.2** **Distrinución de la edad**
+**3.2** **Distribución de la edad**
 
 El gráfico muestra una distribución amplia de la edad, con mayor concentración en rangos intermedios, especialmente entre los 25 y 50 años. Se observa una disminución progresiva en los grupos de mayor edad, lo que refleja una muestra heterogénea con predominio de adultos en etapas medias del ciclo de vida.
 
