@@ -251,5 +251,46 @@ El gráfico muestra una distribución amplia de la edad, con mayor concentració
 La distribución de la satisfacción con la democracia se concentra en las categorías intermedias, destacando la categoría 3 como la más frecuente, seguida de la 2. Considerando que valores más altos indican mayor insatisfacción, estos resultados evidencian una tendencia hacia niveles moderados de insatisfacción, con menor presencia de posturas extremas.
 
 ```{r}
+library(psych)
 
+alpha(
+  datos_satisfaccion_democratica %>%
+    select(
+      clase_social,
+      nivel_educativo,
+      nivel_padres
+    )
+)
 ```
+
+> Los resultados de consistencia interna muestran que el Índice de Capital Sociocultural presenta asociaciones diferenciadas entre sus componentes. Mientras las variables relacionadas con nivel educativo individual y nivel educativo de los padres presentan asociaciones positivas moderadas, la variable de clase social subjetiva muestra una relación más débil e incluso parcialmente inversa respecto al resto de los componentes del índice.
+>
+> Esto sugiere que, si bien las variables seleccionadas se relacionan con dimensiones socioculturales similares, no todas operan exactamente sobre una misma dimensión conceptual. En particular, la percepción subjetiva de clase social parece capturar aspectos sociales distintos al capital educativo formal.
+>
+> Aun así, el índice resulta útil como aproximación exploratoria para representar distintas dimensiones asociadas a la posición sociocultural de los individuos.
+
+```{r}
+# =========================
+# MATRIZ DE CORRELACIONES
+# =========================
+
+correlaciones <- datos_satisfaccion_democratica %>%
+  
+  select(
+    edad,
+    clase_social,
+    nivel_educativo,
+    nivel_padres,
+    indice_capital_sociocultural
+  ) %>%
+  
+  cor(use = "pairwise.complete.obs")
+
+correlaciones
+```
+
+La matriz de correlaciones evidencia asociaciones coherentes entre las variables utilizadas en el análisis. Se observa una correlación positiva moderada entre el nivel educativo del encuestado y el nivel educativo de los padres (`r = 0.30`), lo que sugiere la presencia de procesos de reproducción educativa y transmisión intergeneracional del capital cultural.
+
+Asimismo, el índice de capital sociocultural presenta asociaciones altas con las variables educativas que lo componen, especialmente con el nivel educativo de los padres (`r = 0.89`) y con el nivel educativo del encuestado (`r = 0.67`). Esto indica que el índice se encuentra fuertemente influenciado por dimensiones asociadas al capital educativo familiar e individual.
+
+Por otra parte, la edad presenta una correlación negativa moderada con el índice de capital sociocultural (`r = -0.33`), lo que podría sugerir diferencias generacionales en acceso a educación y posición sociocultural. Finalmente, la clase social subjetiva presenta correlaciones negativas débiles con las variables educativas (`r = -0.25` y `r = -0.23`), resultado coherente con la codificación de la variable, donde valores numéricamente menores representan posiciones sociales más altas.
