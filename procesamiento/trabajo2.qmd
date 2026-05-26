@@ -43,19 +43,19 @@ para estudiar como se distribuye la satisfaccion con la democracia segun variabl
 
 2.  [Sexo:]{.underline} Es variable nominal pues categoriza, pero no ordena ni es numerica. Esta variable no aparece en si en el cuestionario, pero si en la base de datos.
 
-3.  [Nivel educativo:]{.underline} En el caso del nivel educativo, se decidio operacionalizar mediante un indice construido a partir de multiples variables relacionadas con la trayectoria educativa individual y familiar, intentando captar de manera más amplia las trayectorias educativas y el contexto educativo familiar de los encuestados. Este indice esta compuesto por las siguientes preguntas:
+3.  [Nivel educativo:]{.underline} En el caso del nivel educativo, se decidio operacionalizar mediante un indice construido a partir de multiples variables relacionadas con la trayectoria educativa individual y familiar, intentando captar de manera más amplia las trayectorias educativas y el contexto educativo familiar de los encuestados. la complejización de la medición permite aproximarnos no solo a la trayectoria educativa individual del encuestado, sino también al contexto educativo y sociocultural en el que se desarrolla. Este indice esta compuesto por las siguientes preguntas:
 
--   S10 : Edad de finalizacion de estudios
+- S10 : Edad de finalizacion de estudios
 
--   S11 : Nivel educativo alcanzado por el encuestado
+- S11 : Nivel educativo alcanzado por el encuestado
 
--   S12 : Nivel educativo de los padres
+- S12 : Nivel educativo de los padres
 
--   S21A/S21B : Nivel educativo del jefe del hogar
+- S21A/S21B : Nivel educativo del jefe del hogar
 
 ### Variable dependiente
 
--   satisfaccion con la democracia: es ordinal, pues categoriza y ordena pero no es numerica. la pregunta elegida para medirlo es la P11STGBS, que en la encuesta sale como: P11STGBS.A En general, ¿Diría Ud. que está muy satisfecho, más bien satisfecho, no muy satisfecho o nada satisfecho con el funcionamiento de la democracia en (PAÍS)?
+- satisfaccion con la democracia: es ordinal, pues categoriza y ordena pero no es numerica. la pregunta elegida para medirlo es la P11STGBS, que en la encuesta sale como: P11STGBS.A En general, ¿Diría Ud. que está muy satisfecho, más bien satisfecho, no muy satisfecho o nada satisfecho con el funcionamiento de la democracia en (PAÍS)?
 
 ```{r}
 # =========================
@@ -214,7 +214,7 @@ library(ggplot2)
 # GRÁFICO 1: EDAD
 # =========================
 
-ggplot(datos_satisfaccion_democratica, aes(x = EDAD)) +
+ggplot(datos_satisfaccion_democratica, aes(x = edad)) +
   geom_histogram(binwidth = 5, fill = "gray70", color = "black") +
   labs(
     title = "Distribución de la edad",
