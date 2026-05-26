@@ -105,15 +105,16 @@ datos_satisfaccion_democratica <- base_2023 %>%
     SEXO = ifelse(SEXO == 0, NA, SEXO),
 
     # educación propia
-    S10 = ifelse(S10 %in% c(-1, 0, 96, 97, 98), NA, S10),
-    S11 = ifelse(S11 %in% c(-1, 0, 96, 97, 98), NA, S11),
+S10 = ifelse(S10 < 0 | S10 %in% c(96,97,98,99), NA, S10),
+S11 = ifelse(S11 < 0 | S11 %in% c(96,97,98,99), NA, S11),
 
-    # educación padres
-    S12 = ifelse(S12 %in% c(-1, 0, 96, 97, 98), NA, S12),
+# educación padres
+S12 = ifelse(S12 < 0 | S12 %in% c(96,97,98,99), NA, S12),
 
-    # educación jefe hogar
-    S21A = ifelse(S21A %in% c(-1, 0, 96, 97, 98), NA, S21A),
-    S21B = ifelse(S21B %in% c(-1, 0, 96, 97, 98), NA, S21B),
+# educación jefe hogar
+S21A = ifelse(S21A < 0 | S21A %in% c(96,97,98,99), NA, S21A),
+S21B = ifelse(S21B < 0 | S21B %in% c(96,97,98,99), NA, S21B),
+
 
     # satisfacción democracia
     satisfaccion_democracia = case_when(
@@ -145,6 +146,7 @@ datos_satisfaccion_democratica <- base_2023 %>%
   drop_na(satisfaccion_democracia)
 
 names(datos_satisfaccion_democratica)
+
 
 
 
@@ -247,3 +249,7 @@ El gráfico muestra una distribución amplia de la edad, con mayor concentració
 **3.3 Satisfacción con la democracia**
 
 La distribución de la satisfacción con la democracia se concentra en las categorías intermedias, destacando la categoría 3 como la más frecuente, seguida de la 2. Considerando que valores más altos indican mayor insatisfacción, estos resultados evidencian una tendencia hacia niveles moderados de insatisfacción, con menor presencia de posturas extremas.
+
+```{r}
+
+```
