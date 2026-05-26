@@ -209,34 +209,22 @@ La satisfacción con la democracia es una variable ordinal, donde valores más b
 **3.1** A continuación, se presentan dos gráficos descriptivos que permiten visualizar la distribución de dos variables del estudio. Edad y satisfacción con la democracia, esto con el objetivo de caracterizar la composición de la muestra y presentar la distribución de la satisfacción con la democracia
 
 ```{r}
-library(ggplot2)
 
-# =========================
-# GRÁFICO 1: EDAD
-# =========================
+ggplot(datos_satisfaccion_democratica,
+       aes(x = satisfaccion_democracia)) +
 
-ggplot(datos_satisfaccion_democratica, aes(x = edad)) +
-  geom_histogram(binwidth = 5, fill = "gray70", color = "black") +
-  labs(
-    title = "Distribución de la edad",
-    x = "Edad",
-    y = "Frecuencia"
+  geom_bar(
+    fill = "lightgreen",
+    color = "black"
   ) +
-  theme_minimal()
 
-# =========================
-# GRÁFICO 2: SATISFACCIÓN DEMOCRACIA
-# =========================
-
-ggplot(datos_satisfaccion_democratica, aes(x = satisfaccion_democracia)) +
-  geom_bar(fill = "gray70", color = "black") +
   labs(
     title = "Distribución de la satisfacción con la democracia",
     x = "Nivel de satisfacción",
     y = "Frecuencia"
   ) +
-  theme_minimal()
 
+  theme_minimal()
 
 
 ```
@@ -288,11 +276,11 @@ correlaciones <- datos_satisfaccion_democratica %>%
 correlaciones
 ```
 
-La matriz de correlaciones evidencia asociaciones coherentes entre las variables utilizadas en el análisis. Se observa una correlación positiva moderada entre el nivel educativo del encuestado y el nivel educativo de los padres (`r = 0.30`), lo que sugiere la presencia de procesos de reproducción educativa y transmisión intergeneracional del capital cultural.
+La matriz de correlaciones evidencia asociaciones coherentes entre las variables utilizadas en el análisis. Se observa una correlación positiva moderada entre el nivel educativo del encuestado y el nivel educativo de los padres r:0.30, lo que sugiere la presencia de procesos de reproducción educativa y transmisión intergeneracional del capital cultural.
 
-Asimismo, el índice de capital sociocultural presenta asociaciones altas con las variables educativas que lo componen, especialmente con el nivel educativo de los padres (`r = 0.89`) y con el nivel educativo del encuestado (`r = 0.67`). Esto indica que el índice se encuentra fuertemente influenciado por dimensiones asociadas al capital educativo familiar e individual.
+Asimismo, el índice de capital sociocultural presenta asociaciones altas con las variables educativas que lo componen, especialmente con el nivel educativo de los padres r:0.89 y con el nivel educativo del encuestado . Esto indica que el índice se encuentra fuertemente influenciado por dimensiones asociadas al capital educativo familiar e individual.
 
-Por otra parte, la edad presenta una correlación negativa moderada con el índice de capital sociocultural (`r = -0.33`), lo que podría sugerir diferencias generacionales en acceso a educación y posición sociocultural. Finalmente, la clase social subjetiva presenta correlaciones negativas débiles con las variables educativas (`r = -0.25` y `r = -0.23`), resultado coherente con la codificación de la variable, donde valores numéricamente menores representan posiciones sociales más altas.
+Por otra parte, la edad presenta una correlación negativa moderada con el índice de capital sociocultural r:0.33, lo que podría sugerir diferencias generacionales en acceso a educación y posición sociocultural. Finalmente, la clase social subjetiva presenta correlaciones negativas débiles con las variables educativas r:0.25 y r:0.23, resultado coherente con la codificación de la variable, donde valores numéricamente menores representan posiciones sociales más altas.
 
 ```{r}
 # =========================
