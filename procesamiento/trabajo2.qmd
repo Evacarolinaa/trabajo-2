@@ -9,43 +9,51 @@ bibliography: latibarometro.bib
 
 ## problema de investigacion
 
-Desde la elección del presidente Bolsonaro de Brasil en el 2018, América latina y principalmente Argentina ha experimentado transformaciones políticas y sociales marcadas por una creciente polarización y la emergencia de discursos asociados a orden, seguridad y crítica a las instituciones tradicionales, llegando a su punto culmine en las elecciones de 2023, donde el actual presidente, Javier Milei fue electo. Tal como dice [@tedesco2025] “Milei es, sin duda, una figura sumamente polarizante. Desde su ascenso en la política argentina, Milei se ha caracterizado por su fuerte retórica populista, sus propuestas económicas radicales y su estilo confrontativo, todo lo cual ha contribuido a una creciente polarización política.”. 
+Desde la elección de Jair Bolsonaro en Brasil en 2018, América Latina y particularmente Argentina han experimentado transformaciones políticas y sociales marcadas por una creciente polarización y el surgimiento de discursos críticos hacia las instituciones tradicionales. Este proceso alcanzó un punto significativo en las elecciones presidenciales argentinas de 2023, donde Javier Milei resultó electo presidente. Tal como señala [@tedesco2025] “Milei es, sin duda, una figura sumamente polarizante. Desde su ascenso en la política argentina, Milei se ha caracterizado por su fuerte retórica populista, sus propuestas económicas radicales y su estilo confrontativo, todo lo cual ha contribuido a una creciente polarización política”.
 
-El texto de Tedesco es uno de diversos estudios que han evidenciado un deterioro en la legitimidad de la democracia y un aumento en la tolerancia ciudadana hacia alternativas autoritarias. En este contexto, surge el problema de determinar si estos cambios en el escenario político argentino se vinculan con una mayor adhesión a posturas autoritarias en la ciudadanía, considerando variables como la insatisfacción con la democracia, el malestar económico, la tradición y  la desconfianza institucional.
+Diversos estudios han evidenciado un deterioro en la legitimidad de la democracia y una creciente insatisfacción ciudadana con su funcionamiento. En este contexto, resulta relevante analizar cómo se distribuye la satisfacción con la democracia en Argentina durante 2023 y de qué manera esta varía según características sociodemográficas de la población.
+
+La satisfacción con la democracia constituye un indicador relevante para comprender el contexto sociopolítico en el que emergen discursos antisistema y liderazgos críticos de las instituciones democráticas tradicionales, como el de Javier Milei.
 
 ## Justificación
 
-La relevancia de esta investigación radica en comprender por qué, en el contexto argentino actual, ciertos sectores de la población muestran una mayor disposición a adherir a medidas autoritarias, aun cuando estas impliquen restricciones a libertades individuales. Este fenómeno se vuelve especialmente significativo en un escenario marcado por crisis económicas recurrentes, inflación sostenida, incertidumbre social y una creciente demanda por orden y estabilidad.
+La relevancia de esta investigación radica en comprender cómo distintos sectores de la población argentina evalúan el funcionamiento de la democracia en un contexto marcado por crisis económicas recurrentes, inflación sostenida, incertidumbre social y creciente desafección política.
 
-En este marco, resulta clave analizar cómo se configuran determinadas disposiciones ciudadanas que llevan a aceptar soluciones que, en otras circunstancias, no serían consideradas legítimas. Así, el foco está en explicar cómo este clima social se articula con la emergencia de discursos políticos que enfatizan el orden y la autoridad, sin asumir una relación causal única, sino entendiendo que responde a un entramado más amplio de factores.
+En este marco, estudiar la satisfacción con la democracia permite aproximarse a las percepciones ciudadanas sobre la legitimidad del sistema democrático y observar cómo estas se distribuyen según variables sociodemográficas como edad, sexo y nivel educativo.
 
-En este estudio, se abordarán como ejes centrales la percepción de inseguridad, la desconfianza institucional y la crisis económica, reconociendo que, si bien no agotan la complejidad del fenómeno, constituyen variables clave para su comprensión en el caso argentino.
+Asimismo, el estudio resulta pertinente considerando el contexto político argentino de 2023, marcado por el ascenso de Javier Milei y la consolidación de discursos críticos hacia las instituciones políticas tradicionales. En este sentido, la satisfacción con la democracia se aborda como un indicador útil para comprender el escenario social y político en el que emergen este tipo de liderazgos.
 
-Hemos decidido analizar los datos del Latinobarómetro 2023 debido a el novedoso evento de ascenso de Milei en las elecciones presidenciales argentinas de agosto-noviembre de 2023 [@elascen]
-
-En conjunto, el periodo concentra transformaciones estructurales y subjetivas que permiten observar cómo evolucionan las percepciones ciudadanas en contextos de crisis acumulada y cómo estas se articulan con cambios en la disposición hacia el orden, la autoridad y los proyectos políticos emergentes en Argentina.
+Para ello, se analizarán datos del Latinobarómetro 2023, debido a que este periodo concentra transformaciones políticas y sociales relevantes para observar las percepciones ciudadanas sobre la democracia en Argentina.[@elascen]
 
 ## pregunta de investigacion
 
-¿Cómo se distribuye la satisfacción con la democracia según variables sociodemográficas (edad, sexo, ingreso y nivel educativo) en Argentina (2023)?
+¿Cómo se distribuye la satisfacción con la democracia según variables sociodemográficas (edad, sexo y nivel educativo) en Argentina (2023)?
 
 ## Hipotesis
 
-La satisfacción con la democracia se distribuye de manera diferenciada según variables sociodemográficas (edad, sexo, ingreso y nivel educativo) en Argentina (2023).
+La satisfacción con la democracia se distribuye de manera diferenciada según variables sociodemográficas (edad, sexo y nivel educativo) en Argentina (2023).
 
 ## Variables
 
-para estudiar como se distribuye la satisfaccion con la democracia segun variables sociodemograficas contamos con laso siguientes variables:
+para estudiar como se distribuye la satisfaccion con la democracia segun variables sociodemograficas contamos con las siguientes variables:
 
 ### variables independientes:
 
--   [Edad:]{.underline} Es una variable de intervalo o razon, pues es numerica, ordena y categoriza. Esta variable no aparece en si en el cuestionario, pero si en la base de datos
+1.  [Edad:]{.underline} Es una variable de intervalo o razon, pues es numerica, ordena y categoriza. Esta variable no aparece en si en el cuestionario, pero si en la base de datos
 
--   [Sexo:]{.underline} Es variable nominal pues categoriza, pero no ordena ni es numerica. Esta variable no aparece en si en el cuestionario, pero si en la base de datos.
+2.  [Sexo:]{.underline} Es variable nominal pues categoriza, pero no ordena ni es numerica. Esta variable no aparece en si en el cuestionario, pero si en la base de datos.
 
--   [Nivel educativo:]{.underline} es una variable de intervalo o razon por q la pregunta elegida es numerica, ordena y categoriza. se eligio medir esta variable de forma mas escalar, tomando la pregunta S10: ¿A qué edad terminó Ud. su educación (educación de tiempo completo)? y S11:Qué estudios ha realizado? ¿Cuál es el último año cursado? del cuestionario.
+3.  [Nivel educativo:]{.underline} En el caso del nivel educativo, se decidio operacionalizar mediante un indice construido a partir de multiples variables relacionadas con la trayectoria educativa individual y familiar, intentando captar de manera más amplia las trayectorias educativas y el contexto educativo familiar de los encuestados. Este indice esta compuesto por las siguientes preguntas:
 
-### variables dependientes:
+-   S10 : Edad de finalizacion de estudios
+
+-   S11 : Nivel educativo alcanzado por el encuestado
+
+-   S12 : Nivel educativo de los padres
+
+-   S21A/S21B : Nivel educativo del jefe del hogar
+
+### Variable dependiente
 
 -   satisfaccion con la democracia: es ordinal, pues categoriza y ordena pero no es numerica. la pregunta elegida para medirlo es la P11STGBS, que en la encuesta sale como: P11STGBS.A En general, ¿Diría Ud. que está muy satisfecho, más bien satisfecho, no muy satisfecho o nada satisfecho con el funcionamiento de la democracia en (PAÍS)?
 
