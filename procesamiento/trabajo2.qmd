@@ -241,3 +241,5 @@ datos_satisfaccion_democratica %>%
   theme_minimal()
 
 ```
+
+> La distribución de frecuencias muestra que la categoría más frecuente es *"No muy satisfecho"*, seguida por *"Más bien satisfecho"*. En contraste, las categorías extremas presentan una menor proporción de casos, especialmente *"Muy satisfecho"*. Estos resultados sugieren una evaluación predominantemente crítica o moderadamente negativa respecto del funcionamiento de la democracia entre las personas encuestadas.
