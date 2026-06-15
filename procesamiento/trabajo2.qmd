@@ -243,3 +243,266 @@ datos_satisfaccion_democratica %>%
 ```
 
 > La distribución de frecuencias muestra que la categoría más frecuente es *"No muy satisfecho"*, seguida por *"Más bien satisfecho"*. En contraste, las categorías extremas presentan una menor proporción de casos, especialmente *"Muy satisfecho"*. Estos resultados sugieren una evaluación predominantemente crítica o moderadamente negativa respecto del funcionamiento de la democracia entre las personas encuestadas.
+
+## Asociación entre sexo y satisfacción con la democracia
+
+```{r tabla-cruzada-sexo-satisfaccion}
+datos_satisfaccion_democratica %>%
+  mutate(
+    sexo = factor(
+      sexo,
+      levels = c(1, 2),
+      labels = c(
+        "Hombre",
+        "Mujer"
+      )
+    ),
+    satisfaccion_democracia = factor(
+      satisfaccion_democracia,
+      levels = c(1, 2, 3, 4),
+      labels = c(
+        "Muy satisfecho",
+        "Más bien satisfecho",
+        "No muy satisfecho",
+        "Nada satisfecho"
+      )
+    )
+  ) %>%
+  count(
+    sexo,
+    satisfaccion_democracia
+  ) %>%
+  group_by(sexo) %>%
+  mutate(
+    porcentaje = round(
+      n / sum(n) * 100,
+      1
+    )
+  ) %>%
+  knitr::kable(
+    col.names = c(
+      "Sexo",
+      "Satisfacción con la democracia",
+      "Frecuencia",
+      "Porcentaje"
+    ),
+    caption = "Tabla 1. Distribución de la satisfacción con la democracia según sexo"
+  )
+```
+
+#### Prueba de independencia entre sexo y satisfacción con la democracia
+
+```{r chi-cuadrado-sexo-satisfaccion}
+tabla_sexo <- datos_satisfaccion_democratica %>%
+  mutate(
+    sexo = factor(
+      sexo,
+      levels = c(1, 2),
+      labels = c(
+        "Hombre",
+        "Mujer"
+      )
+    ),
+    satisfaccion_democracia = factor(
+      satisfaccion_democracia,
+      levels = c(1, 2, 3, 4),
+      labels = c(
+        "Muy satisfecho",
+        "Más bien satisfecho",
+        "No muy satisfecho",
+        "Nada satisfecho"
+      )
+    )
+  ) %>%
+  select(
+    sexo,
+    satisfaccion_democracia
+  ) %>%
+  table()
+
+chisq.test(tabla_sexo)
+```
+
+#### Interpretación de pruebas asociación de sexo con la democracia
+
+La distribución de la satisfacción con la democracia presenta patrones similares entre hombres y mujeres. En ambos grupos, la categoría más frecuente corresponde a los encuestados *no muy satisfechos* con la democracia, alcanzando un 45,1% entre los hombres y un 39,8% entre las mujeres. Asimismo, las mujeres presentan una proporción ligeramente mayor de personas *más bien satisfechas* (32,1%) en comparación con los hombres (27,9%). Por su parte, las categorías *muy satisfecho* y *nada satisfecho* registran porcentajes relativamente similares entre ambos sexos.
+
+Con el fin de determinar si estas diferencias observadas son estadísticamente significativas, se aplicó una prueba de independencia Chi-cuadrado. Los resultados indican que no existe una asociación estadísticamente significativa entre el sexo y la satisfacción con la democracia (χ² = 4,41; gl = 3; p = 0,2205). En consecuencia, no se dispone de evidencia suficiente para afirmar que la satisfacción con la democracia varíe según el sexo de los encuestados en Argentina durante 2023.
+
+## Asociación entre edad y satisfacción con la democracia
+
+```{r grafico-edad-satisfaccion}
+ggplot(
+  datos_satisfaccion_democratica,
+  aes(
+    x = satisfaccion_democracia,
+    y = edad
+  )
+) +
+  geom_boxplot() +
+  labs(
+    title = "Edad según satisfacción con la democracia",
+    x = "Nivel de satisfacción",
+    y = "Edad"
+  ) +
+  theme_minimal()
+```
+
+```{r kruskal-edad-satisfaccion}
+kruskal.test(
+  edad ~ satisfaccion_democracia,
+  data = datos_satisfaccion_democratica
+)
+```
+
+El gráfico de cajas sugiere algunas diferencias en la distribución de la edad según el nivel de satisfacción con la democracia. En particular, los encuestados que se declaran muy satisfechos presentan una mediana de edad ligeramente inferior al resto de los grupos. Sin embargo, las distribuciones muestran un amplio grado de superposición entre categorías.
+
+Para evaluar formalmente estas diferencias se aplicó la prueba no paramétrica de Kruskal-Wallis. Los resultados indican que las diferencias observadas no son estadísticamente significativas al nivel convencional del 5% (χ² = 6,78; gl = 3; p = 0,079). En consecuencia, no existe evidencia suficiente para afirmar que la edad se asocie con el nivel de satisfacción con la democracia en Argentina durante 2023.
+
+No obstante, el valor p obtenido se aproxima al umbral de significancia estadística, por lo que los resultados sugieren una posible tendencia que podría explorarse con mayor profundidad en futuras investigaciones.
+
+## Asociación entre nivel educativo y satisfacción con la democracia
+
+```{r grafico-educacion-satisfaccion}
+ggplot(
+  datos_satisfaccion_democratica,
+  aes(
+    x = satisfaccion_democracia,
+    y = nivel_educativo
+  )
+) +
+  geom_boxplot() +
+  labs(
+    title = "Nivel educativo según satisfacción con la democracia",
+    x = "Nivel de satisfacción",
+    y = "Nivel educativo"
+  ) +
+  theme_minimal()
+```
+
+```{r kruskal-educacion-satisfaccion}
+kruskal.test(
+  nivel_educativo ~ satisfaccion_democracia,
+  data = datos_satisfaccion_democratica
+)
+```
+
+El gráfico de cajas muestra distribuciones muy similares del nivel educativo entre las distintas categorías de satisfacción con la democracia. Las medianas presentan valores prácticamente equivalentes y existe un amplio solapamiento entre los rangos intercuartílicos de los grupos analizados, lo que sugiere diferencias reducidas en los niveles educativos según el grado de satisfacción democrática.
+
+Para evaluar formalmente estas diferencias se aplicó una prueba no paramétrica de Kruskal-Wallis. Los resultados indican que las diferencias observadas no son estadísticamente significativas (χ² = 6,54; gl = 3; p = 0,088). En consecuencia, no existe evidencia suficiente para afirmar que el nivel educativo se asocie con la satisfacción con la democracia en Argentina durante 2023.
+
+Si bien el valor p obtenido se aproxima al umbral convencional de significancia estadística, los resultados no permiten rechazar la hipótesis nula de igualdad entre los grupos.
+
+Con el objetivo de profundizar el análisis, se estimaron dos modelos de regresión logística ordinal utilizando como variable dependiente la satisfacción con la democracia. El primer modelo incorporó únicamente variables sociodemográficas (sexo, edad y nivel educativo), mientras que el segundo agregó la variable de aprobación presidencial.
+
+## Modelo de regresión logística ordinal
+
+```{r preparacion-modelo-regresion}
+datos_regresion <- base_2023 %>%
+  
+  dplyr::select(
+    EDAD,
+    SEXO,
+    S11,
+    P11STGBS.A,
+    P15STGBS
+  ) %>%
+  
+  mutate(
+    
+    edad = ifelse(EDAD <= 0, NA, EDAD),
+    
+    sexo = case_when(
+      SEXO == 1 ~ "Hombre",
+      SEXO == 2 ~ "Mujer",
+      TRUE ~ NA_character_
+    ),
+    
+    nivel_educativo = case_when(
+      S11 < 0 ~ NA_real_,
+      S11 %in% c(96, 97, 98, 99) ~ NA_real_,
+      TRUE ~ as.numeric(S11)
+    ),
+    
+    satisfaccion_democracia = case_when(
+      P11STGBS.A %in% c(1, 2, 3, 4) ~ P11STGBS.A,
+      TRUE ~ NA_real_
+    ),
+    
+    aprobacion_presidencial = case_when(
+      P15STGBS == 1 ~ "Aprueba",
+      P15STGBS == 2 ~ "Desaprueba",
+      TRUE ~ NA_character_
+    )
+    
+  ) %>%
+  
+  mutate(
+    
+    satisfaccion_democracia = factor(
+      satisfaccion_democracia,
+      ordered = TRUE,
+      levels = c(1, 2, 3, 4),
+      labels = c(
+        "Muy satisfecho",
+        "Más bien satisfecho",
+        "No muy satisfecho",
+        "Nada satisfecho"
+      )
+    ),
+    
+    sexo = factor(sexo),
+    
+    aprobacion_presidencial = factor(
+      aprobacion_presidencial,
+      levels = c(
+        "Aprueba",
+        "Desaprueba"
+      )
+    )
+    
+  ) %>%
+  
+  tidyr::drop_na()
+
+glimpse(datos_regresion)
+```
+
+```{r modelo-1}
+library(MASS)
+
+modelo_1 <- polr(
+  satisfaccion_democracia ~
+    sexo +
+    edad +
+    nivel_educativo,
+  data = datos_regresion,
+  Hess = TRUE
+)
+
+summary(modelo_1)
+```
+
+##### MODELO 1 
+
+Los resultados del primer modelo muestran que ninguna de las variables sociodemográficas presenta una asociación estadísticamente relevante con la satisfacción democrática. Este hallazgo es consistente con los análisis bivariados realizados previamente.
+
+```{r modelo-2}
+library(MASS)
+
+modelo_2 <- polr(
+  satisfaccion_democracia ~
+    sexo +
+    edad +
+    nivel_educativo +
+    aprobacion_presidencial,
+  data = datos_regresion,
+  Hess = TRUE
+)
+
+summary(modelo_2)
+```
+
+##### MODELO 2 
+
+En contraste, al incorporar la aprobación presidencial en el segundo modelo, esta variable emerge como un predictor altamente relevante de la satisfacción con la democracia (t = 11,12). Además, el ajuste global del modelo mejora sustancialmente, reduciendo el AIC desde 2778,88 hasta 2650,54. Estos resultados indican que la evaluación que los ciudadanos realizan del desempeño del gobierno posee una capacidad explicativa considerablemente mayor que las características sociodemográficas analizadas.
