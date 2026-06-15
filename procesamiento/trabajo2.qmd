@@ -164,8 +164,6 @@ datos_satisfaccion_democratica %>%
 
 ```
 
-#### Interpretación de las variables numéricas
-
 La muestra analizada está compuesta por 1.174 casos válidos para las variables edad y nivel educativo. La edad promedio de los encuestados es de 42,9 años, con una desviación estándar de 16,9 años, lo que indica una distribución etaria relativamente amplia. Los participantes tienen edades comprendidas entre los 18 y los 90 años.
 
 Por su parte, el nivel educativo presenta un promedio de 12,8 puntos en la escala utilizada por Latinobarómetro, con una desviación estándar de 3,2 puntos. El rango observado abarca desde la categoría 1 (sin estudios) hasta la categoría 17 (estudios técnicos superiores completos), lo que evidencia una importante heterogeneidad en los niveles educativos presentes en la muestra.
@@ -189,8 +187,6 @@ datos_satisfaccion_democratica %>%
 
 ```
 
-#### Interpretación de las variables categóricas
-
 La muestra presenta una distribución equilibrada por sexo. Del total de casos analizados, el 51,8% corresponde a mujeres y el 48,2% a hombres. Esta distribución reduce el riesgo de sesgos derivados de una sobrerrepresentación de alguno de los grupos y permite realizar comparaciones entre ambos sexos en condiciones relativamente equivalentes.
 
 #### Frecuencia satisfacción con la democracia
@@ -211,5 +207,37 @@ datos_satisfaccion_democratica %>%
     porcentaje = round(n / sum(n) * 100, 1)
   ) %>%
   knitr::kable()
+
+```
+
+La distribución de la satisfacción con la democracia muestra un predominio de evaluaciones negativas respecto de su funcionamiento en Argentina durante 2023. La categoría más frecuente corresponde a los encuestados **no muy satisfechos** (42,3%), seguida por quienes se declaran **más bien satisfechos** (30,1%). Por su parte, un 19,6% señala estar **nada satisfecho**, mientras que solo un 8,0% manifiesta estar **muy satisfecho** con el funcionamiento de la democracia.
+
+En términos generales, los resultados sugieren una percepción crítica de la democracia entre los encuestados, ya que más del 60% de la muestra se concentra en categorías de insatisfacción. Este hallazgo resulta consistente con el contexto político y social argentino de 2023, caracterizado por elevados niveles de incertidumbre económica, polarización política y cuestionamientos hacia las instituciones tradicionales.
+
+```{r grafico-satisfaccion-democracia}
+#| fig-cap: "Distribución de la satisfacción con la democracia en Argentina (2023)"
+
+datos_satisfaccion_democratica %>%
+  mutate(
+    satisfaccion_democracia = factor(
+      satisfaccion_democracia,
+      levels = c(1, 2, 3, 4),
+      labels = c(
+        "Muy satisfecho",
+        "Más bien satisfecho",
+        "No muy satisfecho",
+        "Nada satisfecho"
+      )
+    )
+  ) %>%
+  ggplot(
+    aes(x = satisfaccion_democracia)
+  ) +
+  geom_bar() +
+  labs(
+    x = "Nivel de satisfacción",
+    y = "Frecuencia"
+  ) +
+  theme_minimal()
 
 ```
