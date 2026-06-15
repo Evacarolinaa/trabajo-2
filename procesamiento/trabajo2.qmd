@@ -1,11 +1,13 @@
 ---
 title: "Trabajo 2"
-format: html
+format: pptx
 editor: visual
 bibliography: latibarometro.bib
 ---
 
 # Satisfaccion democratica en Argentina 2023
+
+![](images/64f9c8b5b08a8_transicion-democraticaalta.png){fig-align="center"}
 
 ### problema de investigacion
 
@@ -485,7 +487,7 @@ modelo_1 <- polr(
 summary(modelo_1)
 ```
 
-##### MODELO 1 
+##### MODELO 1
 
 Los resultados del primer modelo muestran que ninguna de las variables sociodemográficas presenta una asociación estadísticamente relevante con la satisfacción democrática. Este hallazgo es consistente con los análisis bivariados realizados previamente.
 
@@ -505,11 +507,11 @@ modelo_2 <- polr(
 summary(modelo_2)
 ```
 
-##### MODELO 2 
+##### MODELO 2
 
 En contraste, al incorporar la aprobación presidencial en el segundo modelo, esta variable emerge como un predictor altamente relevante de la satisfacción con la democracia (t = 11,12). Además, el ajuste global del modelo mejora sustancialmente, reduciendo el AIC desde 2778,88 hasta 2650,54. Estos resultados indican que la evaluación que los ciudadanos realizan del desempeño del gobierno posee una capacidad explicativa considerablemente mayor que las características sociodemográficas analizadas.
 
-### Entrega 4 
+### Entrega 4
 
 Siguiendo las directrices para este ultima entrega,  se estimó un modelo de regresión logística binaria. esta técnica permite evaluar simultáneamente el efecto de múltiples variables independientes sobre la probabilidad de que un individuo pertenezca a una determinada categoría de la variable dependiente.
 
@@ -595,7 +597,7 @@ summary(modelo_logit)
 exp(coef(modelo_logit))
 ```
 
-### Hallazgos 
+### Hallazgos
 
 Los resultados de la regresión logística binaria muestran que la aprobación presidencial es la única variable que presenta una asociación estadísticamente significativa con la satisfacción con la democracia. En particular, los individuos que desaprueban la gestión presidencial tienen una probabilidad considerablemente menor de declararse satisfechos con la democracia en comparación con quienes aprueban al presidente (OR = 0,173; p \< 0,001). Esto equivale a una reducción aproximada del 83% en las probabilidades de manifestar satisfacción democrática.
 
