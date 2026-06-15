@@ -35,21 +35,19 @@ La satisfacción con la democracia se distribuye de manera diferenciada según v
 
 ## Variables
 
-para estudiar como se distribuye la satisfaccion con la democracia segun variables sociodemograficas contamos con las siguientes variables:
+A partir de la retroalimentación recibida en la última entrega, se decidió ajustar la operacionalización de las variables con el fin de fortalecer la coherencia entre la pregunta de investigación, las variables analizadas y las técnicas estadísticas utilizadas. En consecuencia, se optó por mantener únicamente las variables que responden de manera directa al objetivo del estudio: edad, sexo y nivel educativo como variables independientes, y satisfacción con la democracia como variable dependiente.
 
-### variables independientes:
+### Variables independientes
 
-1.  [Edad:]{.underline} Es una variable de intervalo o razon, pues es numerica, ordena y categoriza. Esta variable no aparece en si en el cuestionario, pero si en la base de datos
+1.  **Edad (`EDAD`)**: Es una variable de intervalo o razón, pues es numérica y permite establecer orden y distancia entre los valores observados. Corresponde a la edad declarada por el encuestado al momento de la entrevista y se encuentra registrada directamente en la base de datos.
 
-2.  [Sexo:]{.underline} Es variable nominal pues categoriza, pero no ordena ni es numerica. Esta variable no aparece en si en el cuestionario, pero si en la base de datos.
+2.  **Sexo (`SEXO`)**: Es una variable nominal dicotómica que clasifica a los encuestados según sexo. En la base de datos se encuentra codificada como **1 = Hombre** y **2 = Mujer**.
 
-3.  Para operacionalizar el nivel educativo, se construyó un Índice de Capital Sociocultural compuesto por variables relacionadas tanto con la trayectoria educativa individual como con el contexto social y educativo familiar de los encuestados. La construcción de este índice busca complejizar la medición tradicional del nivel educativo, incorporando dimensiones asociadas al capital cultural y a la posición social de origen.
-
-    El índice fue construido a partir de las variables `S11` (nivel educativo alcanzado por el encuestado), `S12` (nivel educativo de los padres) y `S2` (clase social subjetiva). De esta manera, el indicador permite aproximarse no solo al logro educativo individual, sino también al entorno sociocultural en el que se desarrolla el individuo.
+3.  **Nivel educativo (`S11`)**: Corresponde al máximo nivel educativo alcanzado por el encuestado. Se trata de una variable ordinal, ya que sus categorías representan distintos niveles de escolaridad que pueden ordenarse jerárquicamente según el grado de educación alcanzado. La codificación va desde **1 = Sin estudios** hasta **17 = Estudios técnicos superiores completos**, incluyendo distintos niveles de educación primaria, secundaria, universitaria y técnica.
 
 ### Variable dependiente
 
-- satisfaccion con la democracia: es ordinal, pues categoriza y ordena pero no es numerica. la pregunta elegida para medirlo es la P11STGBS, que en la encuesta sale como: P11STGBS.A En general, ¿Diría Ud. que está muy satisfecho, más bien satisfecho, no muy satisfecho o nada satisfecho con el funcionamiento de la democracia en (PAÍS)?
+**Satisfacción con la democracia (`P11STGBS.A`)**: Es una variable ordinal que mide el grado de satisfacción de los encuestados con el funcionamiento de la democracia en su país. Sus categorías se encuentran ordenadas desde niveles altos de satisfacción hasta niveles altos de insatisfacción. La variable se codifica como **1 = Muy satisfecho**, **2 = Más bien satisfecho**, **3 = No muy satisfecho** y **4 = Nada satisfecho**. En consecuencia, valores más altos indican una menor satisfacción con el funcionamiento de la democracia.
 
 ```{r}
 # =========================
@@ -84,16 +82,14 @@ base_2023 <- read_delim(
 
 ```
 
-```{r}
+```{r construccion-base-analitica}
 
 datos_satisfaccion_democratica <- base_2023 %>%
   
   select(
     EDAD,
     SEXO,
-    S2,
     S11,
-    S12,
     P11STGBS.A
   ) %>%
   
@@ -105,223 +101,41 @@ datos_satisfaccion_democratica <- base_2023 %>%
     # limpieza sexo
     SEXO = ifelse(SEXO == 0, NA, SEXO),
 
-    # clase social subjetiva
-    S2 = ifelse(S2 < 0 | S2 %in% c(0,8), NA, S2),
+    # nivel educativo
+    S11 = ifelse(
+      S11 < 0 | S11 %in% c(96,97,98,99),
+      NA,
+      S11
+    ),
 
-    # nivel educativo encuestado
-    S11 = ifelse(S11 < 0 | S11 %in% c(96,97,98,99), NA, S11),
-
-    # nivel educativo padres
-    S12 = ifelse(S12 < 0 | S12 %in% c(96,97,98,99), NA, S12),
-
-    # satisfacción democracia
+    # satisfacción con la democracia
     satisfaccion_democracia = case_when(
-      P11STGBS.A %in% c(-1, -2, 0, 8) ~ NA_real_,
+      P11STGBS.A %in% c(-1,-2,0,8) ~ NA_real_,
       TRUE ~ P11STGBS.A
     )
 
   ) %>%
-
+  
   rename(
     edad = EDAD,
     sexo = SEXO,
-    clase_social = S2,
-    nivel_educativo = S11,
-    nivel_padres = S12
+    nivel_educativo = S11
   ) %>%
-
+  
   mutate(
-
     satisfaccion_democracia = factor(
       satisfaccion_democracia,
       ordered = TRUE
-    ),
-
-    indice_capital_sociocultural =
-      rowMeans(
-        select(., clase_social, nivel_educativo, nivel_padres),
-        na.rm = TRUE
-      )
-
+    )
   ) %>%
-
-  select(-P11STGBS.A) %>%
-
+  
+  select(
+    edad,
+    sexo,
+    nivel_educativo,
+    satisfaccion_democracia
+  ) %>%
+  
   drop_na(satisfaccion_democracia)
 
-
 ```
-
-```{r}
-
-#TABLA DESCRIPTIVA (numéricas)
-
-names(datos_satisfaccion_democratica)
-
-datos_satisfaccion_democratica %>%
-  select(
-    edad,
-    clase_social,
-    nivel_educativo,
-    nivel_padres,
-    indice_capital_sociocultural
-  ) %>%
-  sjmisc::descr(
-    show = c("label", "range", "mean", "sd", "NA.prc", "n")
-  ) %>%
-  kable("markdown")
-
-#TABLA CATEGORICA(FRECUENCIA)
-
-datos_satisfaccion_democratica %>%
-  count(sexo) %>%
-  mutate(porcentaje = round(n / sum(n) * 100, 1)) %>%
-  kable("markdown")
-
-
-
-```
-
-**1.1 tabla descriptiva de variables**
-
-La edad promedio de los encuestados es de 44 años, con una distribución relativamente amplia. Por su parte, la edad de finalización de estudios se concentra en torno a los 18 años, lo que coincide con la edad tipica de egreso de la educación media, aunque con cierta variabilidad que refleja trayectorias educativas más extensas.”
-
-**2.1 tablas de frecuencia**
-
-**2.2 Variable Sexo**
-
-La muestra presenta una distribución equilibrada por sexo, con un **51% de mujeres y un 49% de hombres**, lo que permite comparaciones sin sesgos relevantes entre ambos grupos. Al tratarse de una variable nominal, sus categorías no implican orden ni jerarquía.
-
-**2.3 Variable Nivel educativo (edad de finalización de estudios)**
-
-La variable corresponde a la edad de finalización de estudios (tipo cuantitativa), donde valores más altos indican trayectorias educativas más prolongadas. En la muestra, se observa una concentración en valores como **13 años (36%)**, **17 años (14,9%)** y **15 años (12,7%)**.
-
-La edad de finalización de estudios se concentra principalmente en estos valores, lo que sugiere trayectorias educativas diversas, con predominio de finalización en edades relativamente tempranas.
-
-**2.4 Variable satisfacción con la democracia**
-
-La satisfacción con la democracia es una variable ordinal, donde valores más bajos indican mayor satisfacción y valores más altos mayor insatisfacción. Los resultados muestran una concentración en categorías intermedias, con un 41,6% en la categoría 3 y un 30,4% en la categoría 2. En contraste, los extremos son menos frecuentes: un 8,1% se declara muy satisfecho (1) y un 19,9% nada satisfecho (4). En conjunto, esto evidencia una tendencia hacia niveles moderados de insatisfacción.
-
-**3.1** A continuación, se presentan dos gráficos descriptivos que permiten visualizar la distribución de dos variables del estudio. Edad y satisfacción con la democracia, esto con el objetivo de caracterizar la composición de la muestra y presentar la distribución de la satisfacción con la democracia
-
-```{r}
-library(ggplot2)
-
-# =========================
-# GRÁFICO 1: EDAD
-# =========================
-
-ggplot(datos_satisfaccion_democratica, aes(x = edad)) +
-  geom_histogram(binwidth = 5, fill = "gray70", color = "black") +
-  labs(
-    title = "Distribución de la edad",
-    x = "Edad",
-    y = "Frecuencia"
-  ) +
-  theme_minimal()
-
-# =========================
-# GRÁFICO 2: SATISFACCIÓN DEMOCRACIA
-# =========================
-
-ggplot(datos_satisfaccion_democratica, aes(x = satisfaccion_democracia)) +
-  geom_bar(fill = "gray70", color = "black") +
-  labs(
-    title = "Distribución de la satisfacción con la democracia",
-    x = "Nivel de satisfacción",
-    y = "Frecuencia"
-  ) +
-  theme_minimal()
-
-
-```
-
-**3.2** **Distribución de la edad**
-
-El gráfico muestra una distribución amplia de la edad, con mayor concentración en rangos intermedios, especialmente entre los 25 y 50 años. Se observa una disminución progresiva en los grupos de mayor edad, lo que refleja una muestra heterogénea con predominio de adultos en etapas medias del ciclo de vida.
-
-**3.3 Satisfacción con la democracia**
-
-La distribución de la satisfacción con la democracia se concentra en las categorías intermedias, destacando la categoría 3 como la más frecuente, seguida de la 2. Considerando que valores más altos indican mayor insatisfacción, estos resultados evidencian una tendencia hacia niveles moderados de insatisfacción, con menor presencia de posturas extremas.
-
-```{r}
-# =========================
-# CONSISTENCIA INTERNA
-# ALFA DE CRONBACH
-# =========================
-
-library(psych)
-
-alpha(
-  datos_satisfaccion_democratica %>%
-    select(
-      clase_social,
-      nivel_educativo,
-      nivel_padres
-    )
-)
-```
-
-> Los resultados de consistencia interna muestran que el Índice de Capital Sociocultural presenta asociaciones diferenciadas entre sus componentes. Mientras las variables relacionadas con nivel educativo individual y nivel educativo de los padres presentan asociaciones positivas moderadas, la variable de clase social subjetiva muestra una relación más débil e incluso parcialmente inversa respecto al resto de los componentes del índice.
->
-> Esto sugiere que, si bien las variables seleccionadas se relacionan con dimensiones socioculturales similares, no todas operan exactamente sobre una misma dimensión conceptual. En particular, la percepción subjetiva de clase social parece capturar aspectos sociales distintos al capital educativo formal.
->
-> Aun así, el índice resulta útil como aproximación exploratoria para representar distintas dimensiones asociadas a la posición sociocultural de los individuos.
-
-```{r}
-# =========================
-# MATRIZ DE CORRELACIONES
-# =========================
-
-correlaciones <- datos_satisfaccion_democratica %>%
-  
-  select(
-    edad,
-    clase_social,
-    nivel_educativo,
-    nivel_padres,
-    indice_capital_sociocultural
-  ) %>%
-  
-  cor(use = "pairwise.complete.obs") 
-
-correlaciones
-
-```
-
-La matriz de correlaciones evidencia asociaciones coherentes entre las variables utilizadas en el análisis. Se observa una correlación positiva moderada entre el nivel educativo del encuestado y el nivel educativo de los padres (`r = 0.30`), lo que sugiere la presencia de procesos de reproducción educativa y transmisión intergeneracional del capital cultural.
-
-Asimismo, el índice de capital sociocultural presenta asociaciones altas con las variables educativas que lo componen, especialmente con el nivel educativo de los padres (`r = 0.89`) y con el nivel educativo del encuestado (`r = 0.67`). Esto indica que el índice se encuentra fuertemente influenciado por dimensiones asociadas al capital educativo familiar e individual.
-
-Por otra parte, la edad presenta una correlación negativa moderada con el índice de capital sociocultural (`r = -0.33`), lo que podría sugerir diferencias generacionales en acceso a educación y posición sociocultural. Finalmente, la clase social subjetiva presenta correlaciones negativas débiles con las variables educativas (`r = -0.25` y `r = -0.23`), resultado coherente con la codificación de la variable, donde valores numéricamente menores representan posiciones sociales más altas.
-
-```{r}
-# =========================
-# ASOCIACIÓN ENTRE CAPITAL
-# SOCIOCULTURAL Y
-# SATISFACCIÓN DEMOCRÁTICA
-# =========================
-
-ggplot(
-  datos_satisfaccion_democratica,
-  aes(
-    x = satisfaccion_democracia,
-    y = indice_capital_sociocultural
-  )
-) +
-  
-  geom_boxplot(fill = "gray70") +
-  
-  labs(
-    title = "Capital sociocultural según satisfacción democrática",
-    x = "Satisfacción con la democracia",
-    y = "Índice de capital sociocultural"
-  ) +
-  
-  theme_minimal()
-
-```
-
-El gráfico evidencia una tendencia donde los niveles más altos de satisfacción con la democracia se asocian con valores ligeramente superiores del índice de capital sociocultural. A medida que aumenta la insatisfacción democrática, las medianas del índice tienden a disminuir gradualmente.
-
-Si bien las diferencias entre categorías no son extremas, la distribución general sugiere una asociación consistente entre ambas variables, observándose una leve concentración de menores niveles de capital sociocultural en los grupos con mayor insatisfacción democrática.

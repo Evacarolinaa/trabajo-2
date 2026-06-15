@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -87,7 +87,7 @@ div.csl-indent {
 <script src="trabajo2_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="trabajo2_files/libs/quarto-html/anchor.min.js"></script>
 <link href="trabajo2_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="trabajo2_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="trabajo2_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="trabajo2_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="trabajo2_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="trabajo2_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -145,26 +145,18 @@ div.csl-indent {
 </section>
 <section id="variables" class="level2">
 <h2 class="anchored" data-anchor-id="variables">Variables</h2>
-<p>para estudiar como se distribuye la satisfaccion con la democracia segun variables sociodemograficas contamos con las siguientes variables:</p>
+<p>A partir de la retroalimentación recibida en la última entrega, se decidió ajustar la operacionalización de las variables con el fin de fortalecer la coherencia entre la pregunta de investigación, las variables analizadas y las técnicas estadísticas utilizadas. En consecuencia, se optó por mantener únicamente las variables que responden de manera directa al objetivo del estudio: edad, sexo y nivel educativo como variables independientes, y satisfacción con la democracia como variable dependiente.</p>
 <section id="variables-independientes" class="level3">
-<h3 class="anchored" data-anchor-id="variables-independientes">variables independientes:</h3>
+<h3 class="anchored" data-anchor-id="variables-independientes">Variables independientes</h3>
 <ol type="1">
-<li><p><u>Edad:</u> Es una variable de intervalo o razon, pues es numerica, ordena y categoriza. Esta variable no aparece en si en el cuestionario, pero si en la base de datos</p></li>
-<li><p><u>Sexo:</u> Es variable nominal pues categoriza, pero no ordena ni es numerica. Esta variable no aparece en si en el cuestionario, pero si en la base de datos.</p></li>
-<li><p><u>Nivel educativo:</u> En el caso del nivel educativo, se decidio operacionalizar mediante un indice construido a partir de multiples variables relacionadas con la trayectoria educativa individual y familiar, intentando captar de manera más amplia las trayectorias educativas y el contexto educativo familiar de los encuestados. la complejización de la medición permite aproximarnos no solo a la trayectoria educativa individual del encuestado, sino también al contexto educativo y sociocultural en el que se desarrolla. Este indice esta compuesto por las siguientes preguntas:</p></li>
+<li><p><strong>Edad (<code>EDAD</code>)</strong>: Es una variable de intervalo o razón, pues es numérica y permite establecer orden y distancia entre los valores observados. Corresponde a la edad declarada por el encuestado al momento de la entrevista y se encuentra registrada directamente en la base de datos.</p></li>
+<li><p><strong>Sexo (<code>SEXO</code>)</strong>: Es una variable nominal dicotómica que clasifica a los encuestados según sexo. En la base de datos se encuentra codificada como <strong>1 = Hombre</strong> y <strong>2 = Mujer</strong>.</p></li>
+<li><p><strong>Nivel educativo (<code>S11</code>)</strong>: Corresponde al máximo nivel educativo alcanzado por el encuestado. Se trata de una variable ordinal, ya que sus categorías representan distintos niveles de escolaridad que pueden ordenarse jerárquicamente según el grado de educación alcanzado. La codificación va desde <strong>1 = Sin estudios</strong> hasta <strong>17 = Estudios técnicos superiores completos</strong>, incluyendo distintos niveles de educación primaria, secundaria, universitaria y técnica.</p></li>
 </ol>
-<ul>
-<li><p>S10 : Edad de finalizacion de estudios</p></li>
-<li><p>S11 : Nivel educativo alcanzado por el encuestado</p></li>
-<li><p>S12 : Nivel educativo de los padres</p></li>
-<li><p>S21A/S21B : Nivel educativo del jefe del hogar</p></li>
-</ul>
 </section>
 <section id="variable-dependiente" class="level3">
 <h3 class="anchored" data-anchor-id="variable-dependiente">Variable dependiente</h3>
-<ul>
-<li>satisfaccion con la democracia: es ordinal, pues categoriza y ordena pero no es numerica. la pregunta elegida para medirlo es la P11STGBS, que en la encuesta sale como: P11STGBS.A En general, ¿Diría Ud. que está muy satisfecho, más bien satisfecho, no muy satisfecho o nada satisfecho con el funcionamiento de la democracia en (PAÍS)?</li>
-</ul>
+<p><strong>Satisfacción con la democracia (<code>P11STGBS.A</code>)</strong>: Es una variable ordinal que mide el grado de satisfacción de los encuestados con el funcionamiento de la democracia en su país. Sus categorías se encuentran ordenadas desde niveles altos de satisfacción hasta niveles altos de insatisfacción. La variable se codifica como <strong>1 = Muy satisfecho</strong>, <strong>2 = Más bien satisfecho</strong>, <strong>3 = No muy satisfecho</strong> y <strong>4 = Nada satisfecho</strong>. En consecuencia, valores más altos indican una menor satisfacción con el funcionamiento de la democracia.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># LIBRERÍAS</span></span>
@@ -215,251 +207,55 @@ dbl (298): NUMINVES, IDENPA, NUMENTRE, REG, CIUDAD, TAMCIUD, COMDIST, EDAD, ...
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    EDAD,</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    SEXO,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    S2,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    S11,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    S12,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    P11STGBS.A</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># limpieza edad</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">EDAD =</span> <span class="fu">ifelse</span>(EDAD <span class="sc">&lt;=</span> <span class="dv">0</span>, <span class="cn">NA</span>, EDAD),</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># limpieza sexo</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">SEXO =</span> <span class="fu">ifelse</span>(SEXO <span class="sc">==</span> <span class="dv">0</span>, <span class="cn">NA</span>, SEXO),</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># clase social subjetiva</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">S2 =</span> <span class="fu">ifelse</span>(S2 <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">|</span> S2 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">8</span>), <span class="cn">NA</span>, S2),</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># nivel educativo encuestado</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">S11 =</span> <span class="fu">ifelse</span>(S11 <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">|</span> S11 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">96</span>,<span class="dv">97</span>,<span class="dv">98</span>,<span class="dv">99</span>), <span class="cn">NA</span>, S11),</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># nivel educativo padres</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">S12 =</span> <span class="fu">ifelse</span>(S12 <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">|</span> S12 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">96</span>,<span class="dv">97</span>,<span class="dv">98</span>,<span class="dv">99</span>), <span class="cn">NA</span>, S12),</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># satisfacción democracia</span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">satisfaccion_democracia =</span> <span class="fu">case_when</span>(</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>      P11STGBS.A <span class="sc">%in%</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">8</span>) <span class="sc">~</span> <span class="cn">NA_real_</span>,</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> P11STGBS.A</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">edad =</span> EDAD,</span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">sexo =</span> SEXO,</span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">clase_social =</span> S2,</span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">nivel_educativo =</span> S11,</span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">nivel_padres =</span> S12</span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">satisfaccion_democracia =</span> <span class="fu">factor</span>(</span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>      satisfaccion_democracia,</span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>      <span class="at">ordered =</span> <span class="cn">TRUE</span></span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">indice_capital_sociocultural =</span></span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rowMeans</span>(</span>
-<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(., clase_social, nivel_educativo, nivel_padres),</span>
-<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>        <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
-<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>P11STGBS.A) <span class="sc">%&gt;%</span></span>
-<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(satisfaccion_democracia)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    S11,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    P11STGBS.A</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># limpieza edad</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">EDAD =</span> <span class="fu">ifelse</span>(EDAD <span class="sc">&lt;=</span> <span class="dv">0</span>, <span class="cn">NA</span>, EDAD),</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># limpieza sexo</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">SEXO =</span> <span class="fu">ifelse</span>(SEXO <span class="sc">==</span> <span class="dv">0</span>, <span class="cn">NA</span>, SEXO),</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># nivel educativo</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">S11 =</span> <span class="fu">ifelse</span>(</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>      S11 <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">|</span> S11 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">96</span>,<span class="dv">97</span>,<span class="dv">98</span>,<span class="dv">99</span>),</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>      <span class="cn">NA</span>,</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>      S11</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># satisfacción con la democracia</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">satisfaccion_democracia =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>      P11STGBS.A <span class="sc">%in%</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">8</span>) <span class="sc">~</span> <span class="cn">NA_real_</span>,</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> P11STGBS.A</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">edad =</span> EDAD,</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">sexo =</span> SEXO,</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">nivel_educativo =</span> S11</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">satisfaccion_democracia =</span> <span class="fu">factor</span>(</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>      satisfaccion_democracia,</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>      <span class="at">ordered =</span> <span class="cn">TRUE</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>    edad,</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>    sexo,</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>    nivel_educativo,</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>    satisfaccion_democracia</span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(satisfaccion_democracia)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#TABLA DESCRIPTIVA (numéricas)</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datos_satisfaccion_democratica)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "edad"                         "sexo"                        
-[3] "clase_social"                 "nivel_educativo"             
-[5] "nivel_padres"                 "satisfaccion_democracia"     
-[7] "indice_capital_sociocultural"</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>datos_satisfaccion_democratica <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    edad,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    clase_social,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    nivel_educativo,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    nivel_padres,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    indice_capital_sociocultural</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  sjmisc<span class="sc">::</span><span class="fu">descr</span>(</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">show =</span> <span class="fu">c</span>(<span class="st">"label"</span>, <span class="st">"range"</span>, <span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"NA.prc"</span>, <span class="st">"n"</span>)</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">"markdown"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 2%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 4%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 9%">
-<col style="width: 14%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: left;">var</th>
-<th style="text-align: left;">label</th>
-<th style="text-align: right;">n</th>
-<th style="text-align: right;">NA.prc</th>
-<th style="text-align: right;">mean</th>
-<th style="text-align: right;">sd</th>
-<th style="text-align: left;">range</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">edad</td>
-<td style="text-align: left;">edad</td>
-<td style="text-align: right;">1174</td>
-<td style="text-align: right;">0.000000</td>
-<td style="text-align: right;">42.943782</td>
-<td style="text-align: right;">16.9292769</td>
-<td style="text-align: left;">72 (18-90)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">clase_social</td>
-<td style="text-align: left;">clase_social</td>
-<td style="text-align: right;">1162</td>
-<td style="text-align: right;">1.022147</td>
-<td style="text-align: right;">3.651463</td>
-<td style="text-align: right;">0.7928636</td>
-<td style="text-align: left;">4 (1-5)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">4</td>
-<td style="text-align: left;">nivel_educativo</td>
-<td style="text-align: left;">nivel_educativo</td>
-<td style="text-align: right;">1174</td>
-<td style="text-align: right;">0.000000</td>
-<td style="text-align: right;">12.786201</td>
-<td style="text-align: right;">3.2288840</td>
-<td style="text-align: left;">16 (1-17)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">5</td>
-<td style="text-align: left;">nivel_padres</td>
-<td style="text-align: left;">nivel_padres</td>
-<td style="text-align: right;">1174</td>
-<td style="text-align: right;">0.000000</td>
-<td style="text-align: right;">8.728279</td>
-<td style="text-align: right;">5.3844778</td>
-<td style="text-align: left;">17 (0-17)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">indice_capital_sociocultural</td>
-<td style="text-align: left;">indice_capital_sociocultural</td>
-<td style="text-align: right;">1174</td>
-<td style="text-align: right;">0.000000</td>
-<td style="text-align: right;">8.408859</td>
-<td style="text-align: right;">2.3091392</td>
-<td style="text-align: left;">13.33 (1.67-15)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#TABLA CATEGORICA(FRECUENCIA)</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>datos_satisfaccion_democratica <span class="sc">%&gt;%</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sexo) <span class="sc">%&gt;%</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">porcentaje =</span> <span class="fu">round</span>(n <span class="sc">/</span> <span class="fu">sum</span>(n) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">"markdown"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">sexo</th>
-<th style="text-align: right;">n</th>
-<th style="text-align: right;">porcentaje</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">566</td>
-<td style="text-align: right;">48.2</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">608</td>
-<td style="text-align: right;">51.8</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p><strong>1.1 tabla descriptiva de variables</strong></p>
-<p>La edad promedio de los encuestados es de 44 años, con una distribución relativamente amplia. Por su parte, la edad de finalización de estudios se concentra en torno a los 18 años, lo que coincide con la edad tipica de egreso de la educación media, aunque con cierta variabilidad que refleja trayectorias educativas más extensas.”</p>
-<p><strong>2.1 tablas de frecuencia</strong></p>
-<p><strong>2.2 Variable Sexo</strong></p>
-<p>La muestra presenta una distribución equilibrada por sexo, con un <strong>51% de mujeres y un 49% de hombres</strong>, lo que permite comparaciones sin sesgos relevantes entre ambos grupos. Al tratarse de una variable nominal, sus categorías no implican orden ni jerarquía.</p>
-<p><strong>2.3 Variable Nivel educativo (edad de finalización de estudios)</strong></p>
-<p>La variable corresponde a la edad de finalización de estudios (tipo cuantitativa), donde valores más altos indican trayectorias educativas más prolongadas. En la muestra, se observa una concentración en valores como <strong>13 años (36%)</strong>, <strong>17 años (14,9%)</strong> y <strong>15 años (12,7%)</strong>.</p>
-<p>La edad de finalización de estudios se concentra principalmente en estos valores, lo que sugiere trayectorias educativas diversas, con predominio de finalización en edades relativamente tempranas.</p>
-<p><strong>2.4 Variable satisfacción con la democracia</strong></p>
-<p>La satisfacción con la democracia es una variable ordinal, donde valores más bajos indican mayor satisfacción y valores más altos mayor insatisfacción. Los resultados muestran una concentración en categorías intermedias, con un 41,6% en la categoría 3 y un 30,4% en la categoría 2. En contraste, los extremos son menos frecuentes: un 8,1% se declara muy satisfecho (1) y un 19,9% nada satisfecho (4). En conjunto, esto evidencia una tendencia hacia niveles moderados de insatisfacción.</p>
-<p><strong>3.1</strong> A continuación, se presentan dos gráficos descriptivos que permiten visualizar la distribución de dos variables del estudio. Edad y satisfacción con la democracia, esto con el objetivo de caracterizar la composición de la muestra y presentar la distribución de la satisfacción con la democracia</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># GRÁFICO 1: EDAD</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_satisfaccion_democratica, <span class="fu">aes</span>(<span class="at">x =</span> edad)) <span class="sc">+</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">"gray70"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribución de la edad"</span>,</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Edad"</span>,</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frecuencia"</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="trabajo2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># GRÁFICO 2: SATISFACCIÓN DEMOCRACIA</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># =========================</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_satisfaccion_democratica, <span class="fu">aes</span>(<span class="at">x =</span> satisfaccion_democracia)) <span class="sc">+</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"gray70"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribución de la satisfacción con la democracia"</span>,</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Nivel de satisfacción"</span>,</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frecuencia"</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="trabajo2_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>3.2</strong> <strong>Distribución de la edad</strong></p>
-<p>El gráfico muestra una distribución amplia de la edad, con mayor concentración en rangos intermedios, especialmente entre los 25 y 50 años. Se observa una disminución progresiva en los grupos de mayor edad, lo que refleja una muestra heterogénea con predominio de adultos en etapas medias del ciclo de vida.</p>
-<p><strong>3.3 Satisfacción con la democracia</strong></p>
-<p>La distribución de la satisfacción con la democracia se concentra en las categorías intermedias, destacando la categoría 3 como la más frecuente, seguida de la 2. Considerando que valores más altos indican mayor insatisfacción, estos resultados evidencian una tendencia hacia niveles moderados de insatisfacción, con menor presencia de posturas extremas.</p>
 
 </section>
 </section>
