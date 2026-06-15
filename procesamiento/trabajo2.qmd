@@ -1,17 +1,15 @@
 ---
 title: "Trabajo 2"
-format: pptx
+format: html
 editor: visual
 bibliography: latibarometro.bib
 ---
 
 # Satisfaccion democratica en Argentina 2023
 
-![](images/64f9c8b5b08a8_transicion-democraticaalta.png){fig-align="center"}
-
 ### problema de investigacion
 
-<!--Desde la elección de Jair Bolsonaro en Brasil en 2018, América Latina y particularmente Argentina han experimentado transformaciones políticas y sociales marcadas por una creciente polarización y el surgimiento de discursos críticos hacia las instituciones tradicionales. Este proceso alcanzó un punto significativo en las elecciones presidenciales argentinas de 2023, donde Javier Milei resultó electo presidente. Tal como señala [@tedesco2025] “Milei es, sin duda, una figura sumamente polarizante. Desde su ascenso en la política argentina, Milei se ha caracterizado por su fuerte retórica populista, sus propuestas económicas radicales y su estilo confrontativo, todo lo cual ha contribuido a una creciente polarización política”.-->
+Desde la elección de Jair Bolsonaro en Brasil en 2018, América Latina y particularmente Argentina han experimentado transformaciones políticas y sociales marcadas por una creciente polarización y el surgimiento de discursos críticos hacia las instituciones tradicionales. Este proceso alcanzó un punto significativo en las elecciones presidenciales argentinas de 2023, donde Javier Milei resultó electo presidente. Tal como señala [@tedesco2025] “Milei es, sin duda, una figura sumamente polarizante. Desde su ascenso en la política argentina, Milei se ha caracterizado por su fuerte retórica populista, sus propuestas económicas radicales y su estilo confrontativo, todo lo cual ha contribuido a una creciente polarización política”.
 
 Diversos estudios han evidenciado un deterioro en la legitimidad de la democracia y una creciente insatisfacción ciudadana con su funcionamiento. En este contexto, resulta relevante analizar cómo se distribuye la satisfacción con la democracia en Argentina durante 2023 y de qué manera esta varía según características sociodemográficas de la población.
 
@@ -21,9 +19,9 @@ La satisfacción con la democracia constituye un indicador relevante para compre
 
 La relevancia de esta investigación radica en comprender cómo distintos sectores de la población argentina evalúan el funcionamiento de la democracia en un contexto marcado por crisis económicas recurrentes, inflación sostenida, incertidumbre social y creciente desafección política.
 
-<!--En este marco, estudiar la satisfacción con la democracia permite aproximarse a las percepciones ciudadanas sobre la legitimidad del sistema democrático y observar cómo estas se distribuyen según variables sociodemográficas como edad, sexo y nivel educativo.-->
+En este marco, estudiar la satisfacción con la democracia permite aproximarse a las percepciones ciudadanas sobre la legitimidad del sistema democrático y observar cómo estas se distribuyen según variables sociodemográficas como edad, sexo y nivel educativo.
 
-<!--Asimismo, el estudio resulta pertinente considerando el contexto político argentino de 2023, marcado por el ascenso de Javier Milei y la consolidación de discursos críticos hacia las instituciones políticas tradicionales. En este sentido, la satisfacción con la democracia se aborda como un indicador útil para comprender el escenario social y político en el que emergen este tipo de liderazgos.-->
+Asimismo, el estudio resulta pertinente considerando el contexto político argentino de 2023, marcado por el ascenso de Javier Milei y la consolidación de discursos críticos hacia las instituciones políticas tradicionales. En este sentido, la satisfacción con la democracia se aborda como un indicador útil para comprender el escenario social y político en el que emergen este tipo de liderazgos.
 
 Para ello, se analizarán datos del Latinobarómetro 2023, debido a que este periodo concentra transformaciones políticas y sociales relevantes para observar las percepciones ciudadanas sobre la democracia en Argentina.[@elascen]
 
@@ -39,13 +37,13 @@ La satisfacción con la democracia se distribuye de manera diferenciada según v
 
 A partir de la retroalimentación recibida en la última entrega, se decidió ajustar la operacionalización de las variables con el fin de fortalecer la coherencia entre la pregunta de investigación, las variables analizadas y las técnicas estadísticas utilizadas. En consecuencia, se optó por mantener únicamente las variables que responden de manera directa al objetivo del estudio: edad, sexo y nivel educativo como variables independientes, y satisfacción con la democracia como variable dependiente.
 
-### <!--Variables independientes-->
+### Variables independientes
 
 1.  **Edad (`EDAD`)**: Es una variable de intervalo o razón, pues es numérica y permite establecer orden y distancia entre los valores observados. Corresponde a la edad declarada por el encuestado al momento de la entrevista y se encuentra registrada directamente en la base de datos.
 
-2.  **sexo (`SEXO`)**: Es una variable nominal dicotómica que clasifica a los encuestados según sexo. En la base de datos se encuentra codificada como **1 = Hombre** y **2 = Mujer**.
+2.  **Sexo (`SEXO`)**: Es una variable nominal dicotómica que clasifica a los encuestados según sexo. En la base de datos se encuentra codificada como **1 = Hombre** y **2 = Mujer**.
 
-3.  **Nivel educativo (`S11`)**: Corresponde al máximo nivel educativo alcanzado por el encuestado. Se trata de una variable ordinal, ya que sus categorías representan distintos niveles de escolaridad que pueden ordenarse jerárquicamente según el grado de educación alcanzado. La codificación va desde **1 = Sin estudios** hasta **17 = Estudios técnicos superiores completos**, incluyendo distintos niveles de educación primaria, secundaria, universitaria y técnica.--\>
+3.  **Nivel educativo (`S11`)**: Corresponde al máximo nivel educativo alcanzado por el encuestado. Se trata de una variable ordinal, ya que sus categorías representan distintos niveles de escolaridad que pueden ordenarse jerárquicamente según el grado de educación alcanzado. La codificación va desde **1 = Sin estudios** hasta **17 = Estudios técnicos superiores completos**, incluyendo distintos niveles de educación primaria, secundaria, universitaria y técnica.
 
 ### Variable dependiente
 
