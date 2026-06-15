@@ -150,7 +150,6 @@ datos_satisfaccion_democratica <- base_2023 %>%
   drop_na(satisfaccion_democracia)
 
 
-
 ```
 
 ```{r}
@@ -180,16 +179,12 @@ datos_satisfaccion_democratica %>%
   kable("markdown")
 
 
+
 ```
 
 **1.1 tabla descriptiva de variables**
 
 La edad promedio de los encuestados es de 44 años, con una distribución relativamente amplia. Por su parte, la edad de finalización de estudios se concentra en torno a los 18 años, lo que coincide con la edad tipica de egreso de la educación media, aunque con cierta variabilidad que refleja trayectorias educativas más extensas.”
-
-```{r}
-
-
-```
 
 **2.1 tablas de frecuencia**
 
@@ -239,7 +234,6 @@ ggplot(datos_satisfaccion_democratica, aes(x = satisfaccion_democracia)) +
   theme_minimal()
 
 
-
 ```
 
 **3.2** **Distribución de la edad**
@@ -251,6 +245,11 @@ El gráfico muestra una distribución amplia de la edad, con mayor concentració
 La distribución de la satisfacción con la democracia se concentra en las categorías intermedias, destacando la categoría 3 como la más frecuente, seguida de la 2. Considerando que valores más altos indican mayor insatisfacción, estos resultados evidencian una tendencia hacia niveles moderados de insatisfacción, con menor presencia de posturas extremas.
 
 ```{r}
+# =========================
+# CONSISTENCIA INTERNA
+# ALFA DE CRONBACH
+# =========================
+
 library(psych)
 
 alpha(
@@ -284,9 +283,10 @@ correlaciones <- datos_satisfaccion_democratica %>%
     indice_capital_sociocultural
   ) %>%
   
-  cor(use = "pairwise.complete.obs")
+  cor(use = "pairwise.complete.obs") 
 
 correlaciones
+
 ```
 
 La matriz de correlaciones evidencia asociaciones coherentes entre las variables utilizadas en el análisis. Se observa una correlación positiva moderada entre el nivel educativo del encuestado y el nivel educativo de los padres (`r = 0.30`), lo que sugiere la presencia de procesos de reproducción educativa y transmisión intergeneracional del capital cultural.
@@ -319,6 +319,7 @@ ggplot(
   ) +
   
   theme_minimal()
+
 ```
 
 El gráfico evidencia una tendencia donde los niveles más altos de satisfacción con la democracia se asocian con valores ligeramente superiores del índice de capital sociocultural. A medida que aumenta la insatisfacción democrática, las medianas del índice tienden a disminuir gradualmente.
