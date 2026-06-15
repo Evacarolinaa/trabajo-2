@@ -256,6 +256,110 @@ dbl (298): NUMINVES, IDENPA, NUMENTRE, REG, CIUDAD, TAMCIUD, COMDIST, EDAD, ...
 <span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(satisfaccion_democracia)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+</section>
+<section id="estadística-descriptiva" class="level2">
+<h2 class="anchored" data-anchor-id="estadística-descriptiva">Estadística descriptiva</h2>
+<section id="variables-numéricas" class="level3">
+<h3 class="anchored" data-anchor-id="variables-numéricas">Variables numéricas</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>datos_satisfaccion_democratica <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    edad,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    nivel_educativo</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  sjmisc<span class="sc">::</span><span class="fu">descr</span>(</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">show =</span> <span class="fu">c</span>(</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">"range"</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">"mean"</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">"sd"</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">"NA.prc"</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">"n"</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">"markdown"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">var</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">NA.prc</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: left;">range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">edad</td>
+<td style="text-align: right;">1174</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">42.94378</td>
+<td style="text-align: right;">16.929277</td>
+<td style="text-align: left;">72 (18-90)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nivel_educativo</td>
+<td style="text-align: right;">1174</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">12.78620</td>
+<td style="text-align: right;">3.228884</td>
+<td style="text-align: left;">16 (1-17)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="interpretación-de-las-variables-numéricas" class="level3">
+<h3 class="anchored" data-anchor-id="interpretación-de-las-variables-numéricas">Interpretación de las variables numéricas</h3>
+<p>La muestra analizada está compuesta por 1.174 casos válidos para las variables edad y nivel educativo. La edad promedio de los encuestados es de 42,9 años, con una desviación estándar de 16,9 años, lo que indica una distribución etaria relativamente amplia. Los participantes tienen edades comprendidas entre los 18 y los 90 años.</p>
+<p>Por su parte, el nivel educativo presenta un promedio de 12,8 puntos en la escala utilizada por Latinobarómetro, con una desviación estándar de 3,2 puntos. El rango observado abarca desde la categoría 1 (sin estudios) hasta la categoría 17 (estudios técnicos superiores completos), lo que evidencia una importante heterogeneidad en los niveles educativos presentes en la muestra.</p>
+</section>
+<section id="variables-categóricas" class="level3">
+<h3 class="anchored" data-anchor-id="variables-categóricas">Variables categóricas</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>datos_satisfaccion_democratica <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sexo =</span> <span class="fu">case_when</span>(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>      sexo <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Hombre"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>      sexo <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Mujer"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sexo) <span class="sc">%&gt;%</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">porcentaje =</span> <span class="fu">round</span>(n <span class="sc">/</span> <span class="fu">sum</span>(n) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">sexo</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">porcentaje</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Hombre</td>
+<td style="text-align: right;">566</td>
+<td style="text-align: right;">48.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mujer</td>
+<td style="text-align: right;">608</td>
+<td style="text-align: right;">51.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="interpretación-de-las-variables-categóricas" class="level3">
+<h3 class="anchored" data-anchor-id="interpretación-de-las-variables-categóricas">Interpretación de las variables categóricas</h3>
+<p>La muestra presenta una distribución equilibrada por sexo. Del total de casos analizados, el 51,8% corresponde a mujeres y el 48,2% a hombres. Esta distribución reduce el riesgo de sesgos derivados de una sobrerrepresentación de alguno de los grupos y permite realizar comparaciones entre ambos sexos en condiciones relativamente equivalentes.</p>
 
 </section>
 </section>

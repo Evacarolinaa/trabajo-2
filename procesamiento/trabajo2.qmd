@@ -7,7 +7,7 @@ bibliography: latibarometro.bib
 
 # Satisfaccion democratica en Argentina 2023
 
-## problema de investigacion
+### problema de investigacion
 
 Desde la elección de Jair Bolsonaro en Brasil en 2018, América Latina y particularmente Argentina han experimentado transformaciones políticas y sociales marcadas por una creciente polarización y el surgimiento de discursos críticos hacia las instituciones tradicionales. Este proceso alcanzó un punto significativo en las elecciones presidenciales argentinas de 2023, donde Javier Milei resultó electo presidente. Tal como señala [@tedesco2025] “Milei es, sin duda, una figura sumamente polarizante. Desde su ascenso en la política argentina, Milei se ha caracterizado por su fuerte retórica populista, sus propuestas económicas radicales y su estilo confrontativo, todo lo cual ha contribuido a una creciente polarización política”.
 
@@ -15,7 +15,7 @@ Diversos estudios han evidenciado un deterioro en la legitimidad de la democraci
 
 La satisfacción con la democracia constituye un indicador relevante para comprender el contexto sociopolítico en el que emergen discursos antisistema y liderazgos críticos de las instituciones democráticas tradicionales, como el de Javier Milei.
 
-## Justificación
+### Justificación
 
 La relevancia de esta investigación radica en comprender cómo distintos sectores de la población argentina evalúan el funcionamiento de la democracia en un contexto marcado por crisis económicas recurrentes, inflación sostenida, incertidumbre social y creciente desafección política.
 
@@ -25,15 +25,15 @@ Asimismo, el estudio resulta pertinente considerando el contexto político argen
 
 Para ello, se analizarán datos del Latinobarómetro 2023, debido a que este periodo concentra transformaciones políticas y sociales relevantes para observar las percepciones ciudadanas sobre la democracia en Argentina.[@elascen]
 
-## pregunta de investigacion
+### Pregunta de investigacion
 
 ¿Cómo se distribuye la satisfacción con la democracia según variables sociodemográficas (edad, sexo y nivel educativo) en Argentina (2023)?
 
-## Hipotesis
+### Hipotesis
 
 La satisfacción con la democracia se distribuye de manera diferenciada según variables sociodemográficas (edad, sexo y nivel educativo) en Argentina (2023).
 
-## Variables
+### Variables
 
 A partir de la retroalimentación recibida en la última entrega, se decidió ajustar la operacionalización de las variables con el fin de fortalecer la coherencia entre la pregunta de investigación, las variables analizadas y las técnicas estadísticas utilizadas. En consecuencia, se optó por mantener únicamente las variables que responden de manera directa al objetivo del estudio: edad, sexo y nivel educativo como variables independientes, y satisfacción con la democracia como variable dependiente.
 
@@ -137,5 +137,79 @@ datos_satisfaccion_democratica <- base_2023 %>%
   ) %>%
   
   drop_na(satisfaccion_democracia)
+
+```
+
+## Estadística descriptiva
+
+#### Variables numéricas
+
+```{r descriptivos-numericos}
+
+datos_satisfaccion_democratica %>%
+  select(
+    edad,
+    nivel_educativo
+  ) %>%
+  sjmisc::descr(
+    show = c(
+      "range",
+      "mean",
+      "sd",
+      "NA.prc",
+      "n"
+    )
+  ) %>%
+  kable("markdown")
+
+```
+
+#### Interpretación de las variables numéricas
+
+La muestra analizada está compuesta por 1.174 casos válidos para las variables edad y nivel educativo. La edad promedio de los encuestados es de 42,9 años, con una desviación estándar de 16,9 años, lo que indica una distribución etaria relativamente amplia. Los participantes tienen edades comprendidas entre los 18 y los 90 años.
+
+Por su parte, el nivel educativo presenta un promedio de 12,8 puntos en la escala utilizada por Latinobarómetro, con una desviación estándar de 3,2 puntos. El rango observado abarca desde la categoría 1 (sin estudios) hasta la categoría 17 (estudios técnicos superiores completos), lo que evidencia una importante heterogeneidad en los niveles educativos presentes en la muestra.
+
+#### Variables categóricas
+
+```{r frecuencias-sexo}
+
+datos_satisfaccion_democratica %>%
+  mutate(
+    sexo = case_when(
+      sexo == 1 ~ "Hombre",
+      sexo == 2 ~ "Mujer"
+    )
+  ) %>%
+  count(sexo) %>%
+  mutate(
+    porcentaje = round(n / sum(n) * 100, 1)
+  ) %>%
+  knitr::kable()
+
+```
+
+#### Interpretación de las variables categóricas
+
+La muestra presenta una distribución equilibrada por sexo. Del total de casos analizados, el 51,8% corresponde a mujeres y el 48,2% a hombres. Esta distribución reduce el riesgo de sesgos derivados de una sobrerrepresentación de alguno de los grupos y permite realizar comparaciones entre ambos sexos en condiciones relativamente equivalentes.
+
+#### Frecuencia satisfacción con la democracia
+
+```{r frecuencias-satisfaccion-democracia}
+
+datos_satisfaccion_democratica %>%
+  mutate(
+    satisfaccion_democracia = case_when(
+      satisfaccion_democracia == 1 ~ "Muy satisfecho",
+      satisfaccion_democracia == 2 ~ "Más bien satisfecho",
+      satisfaccion_democracia == 3 ~ "No muy satisfecho",
+      satisfaccion_democracia == 4 ~ "Nada satisfecho"
+    )
+  ) %>%
+  count(satisfaccion_democracia) %>%
+  mutate(
+    porcentaje = round(n / sum(n) * 100, 1)
+  ) %>%
+  knitr::kable()
 
 ```
